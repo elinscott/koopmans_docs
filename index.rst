@@ -1,4 +1,4 @@
-TOSCAM documentation
+Koopmans documentation
 ====================
 
 This webpage is still under development. Come back soon!
