@@ -4,132 +4,113 @@
       <th>Description</th>
       <th>Type</th>
       <th>Default</th>
-      <th>Options</th>
    </tr>
    <tr>
       <td><code>task</code></td>
       <td>Task to perform</td>
       <td><code>str</code></td>
-      <td><code>singlepoint</code></td>
-      <td><code>singlepoint</code>/<code>convergence</code>/<code>environ_dscf</code></td>
+      <td><code>singlepoint</code> (must be <code>singlepoint</code>/<code>convergence</code>/<code>environ_dscf</code>)</td>
    </tr>
    <tr>
       <td><code>functional</code></td>
       <td>Orbital-density-dependent-functional/density-functional to use</td>
       <td><code>str</code></td>
-      <td><code>ki</code></td>
-      <td><code>ki</code>/<code>kipz</code>/<code>pkipz</code>/<code>pbe</code>/<code>all</code></td>
+      <td><code>ki</code> (must be <code>ki</code>/<code>kipz</code>/<code>pkipz</code>/<code>pbe</code>/<code>all</code>)</td>
    </tr>
    <tr>
       <td><code>init_density</code></td>
       <td>the functional to use to initialise the density</td>
       <td><code>str</code></td>
-      <td><code>pbe</code></td>
-      <td><code>pbe</code>/<code>pz</code>/<code>ki</code></td>
+      <td><code>pbe</code> (must be <code>pbe</code>/<code>pz</code>/<code>ki</code>)</td>
    </tr>
    <tr>
       <td><code>init_variational_orbitals</code></td>
       <td>which orbitals to use as an initial guess for the variational orbitals</td>
       <td><code>str</code></td>
-      <td><code>pz</code></td>
-      <td><code>pz</code>/<code>mlwfs</code>/<code>ki</code>/<code>skip</code></td>
+      <td><code>pz</code> (must be <code>pz</code>/<code>mlwfs</code>/<code>ki</code>/<code>skip</code>)</td>
    </tr>
    <tr>
       <td><code>periodic</code></td>
       <td>whether or not the system is periodic. If False, interaction between periodic images will be corrected for</td>
       <td><code>bool</code></td>
       <td><code>False</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>n_max_sc_steps</code></td>
       <td>maximum number of self-consistency steps for calculating alpha</td>
       <td><code>int</code></td>
       <td><code>1</code></td>
-      <td><code>s.options</code></td>
    </tr>
    <tr>
       <td><code>alpha_conv_thr</code></td>
       <td>convergence threshold for |delta E - lambda|; if below this threshold, the corresponding alpha value is not updated</td>
       <td><code>float</code>/<code>str</code></td>
       <td><code>0.001</code></td>
-      <td><code>s.options</code></td>
    </tr>
    <tr>
       <td><code>calculate_alpha</code></td>
       <td>if True, the screening parameters will be calculated; if False, they will be read directly from file</td>
       <td><code>bool</code></td>
       <td><code>True</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>alpha_guess</code></td>
       <td>starting guess for alpha (overridden if alpha_from_file is true)</td>
       <td><code>float</code></td>
       <td><code>0.6</code></td>
-      <td><code>s.options</code></td>
    </tr>
    <tr>
       <td><code>alpha_from_file</code></td>
       <td>if True, uses the file_alpharef.txt from the base directory as a starting guess</td>
       <td><code>bool</code></td>
       <td><code>False</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>print_qc</code></td>
       <td>if True, prints out strings for the purposes of quality control</td>
       <td><code>bool</code></td>
       <td><code>False</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>from_scratch</code></td>
       <td>if True, will delete any preexisting workflow and start again; if False, will resume a workflow from where it was last up to</td>
       <td><code>bool</code></td>
       <td><code>False</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>orbital_groups</code></td>
       <td>a list of integers the same length as the total number of bands, denoting which bands to assign the same screening parameter to</td>
       <td><code>list</code></td>
-      <td><code>None</code></td>
-      <td><code>s.options</code></td>
+      <td></td>
    </tr>
    <tr>
       <td><code>enforce_spin_symmetry</code></td>
       <td>if True, the spin-up and spin-down wavefunctions will be forced to be the same</td>
       <td><code>bool</code></td>
       <td><code>True</code></td>
-      <td><code>True</code>/<code>False</code></td>
    </tr>
    <tr>
       <td><code>convergence_observable</code></td>
       <td>System observable of interest which we converge</td>
       <td><code>str</code></td>
-      <td><code>total energy</code></td>
-      <td><code>homo energy</code>/<code>lumo energy</code>/<code>total energy</code></td>
+      <td><code>total energy</code> (must be <code>homo energy</code>/<code>lumo energy</code>/<code>total energy</code>)</td>
    </tr>
    <tr>
       <td><code>convergence_threshold</code></td>
       <td>Convergence threshold for the system observable of interest</td>
       <td><code>str</code>/<code>float</code></td>
-      <td><code>None</code></td>
-      <td><code>s.options</code></td>
+      <td></td>
    </tr>
    <tr>
       <td><code>convergence_parameters</code></td>
       <td>The observable of interest will be converged with respect to this/these simulation parameter(s)</td>
       <td><code>list</code>/<code>str</code></td>
       <td><code>['ecutwfc']</code></td>
-      <td><code>s.options</code></td>
    </tr>
    <tr>
       <td><code>eps_cavity</code></td>
       <td>a list of epsilon_infinity values for the cavity in dscf calculations</td>
       <td><code>list</code></td>
       <td><code>[1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</code></td>
-      <td><code>s.options</code></td>
    </tr>
 </table>
