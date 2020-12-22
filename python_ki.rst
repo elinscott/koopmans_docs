@@ -1,3 +1,8 @@
+python KI
+=========
+
+``python_KI`` is a python script for performing Koopmans spectral functional calculations...
+
 Keywords
 --------
 .. raw:: html
@@ -8,7 +13,7 @@ Keywords
    <br>
 
 .. raw:: html
-   :file: _static/keywords.html
+   :file: _static/python_ki_keywords/keywords.html
 
 .. raw:: html 
 

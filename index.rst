@@ -1,5 +1,6 @@
+**********************
 Koopmans documentation
-====================
+**********************
 
 This webpage is still under development. Come back soon!
 
@@ -7,11 +8,16 @@ This webpage is still under development. Come back soon!
    :maxdepth: 2
 
    about
+   theory
    installation
-   keywords
+   cp_koopmans.rst
+   python_ki.rst
+   kc_wann.rst
    tutorials
    links
    papers
    license
    contact
 
+CP Koopmans
+===========
