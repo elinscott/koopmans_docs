@@ -20,7 +20,7 @@ The important lines are highlighted. ``"task": "convergence"`` means that we wil
 
 When you run the calculation you should get something like this:
 
-.. code-block:: bash
+.. code-block:: text
 
   $ run_koopmans.py pbe_convergence.json
   ecutwfc = 20.0, cell_size = 1.0
@@ -43,8 +43,8 @@ Note that ``cell_size = 1.3`` means that we need a cell 1.3 times larger than th
 
 The individual calculations reside in nested subdirectories. If you plot the HOMO energies from each of these, this is what you will get:
 
-.. image:: _static/tutorials/pbe_convergence_plot.pdf
-  :width: 400
+.. image:: _static/tutorials/pbe_convergence_plot.png
+  :width: 800
   :alt: Plot of HOMO energy with respect to ecutwfc and cell size
   :align: center
 
