@@ -3,14 +3,13 @@ from koopmans import io
 import matplotlib.pyplot as plt
 import aesthetics
 
-
 if __name__ == '__main__':
 
     calcs = []
     for fname in glob('*/*/*.cpo'):
         fname = fname.replace('.cpo', '')
         calc = io.load_calculator(fname)
-        calc.cell_size = calc.calc.atoms.cell[0, 0]
+        calc.cell_size = calc.calc.atoms.cell[0, 0] 
         calcs.append(calc)
 
     ecutwfcs = sorted(list(set([c.ecutwfc for c in calcs])))
@@ -36,4 +35,5 @@ if __name__ == '__main__':
     ax.set_xlabel('energy cutoff (Ha)')
 
     ax.legend()
-    plt.savefig('pbe_convergence_plot.pdf')
+    plt.tight_layout()
+    plt.savefig('pbe_convergence_plot.png', facecolor=(1,1,1,0))
