@@ -34,6 +34,6 @@ if __name__ == '__main__':
     ax.set_ylabel(r'$|\Delta\varepsilon_{HOMO}|$ (eV)')
     ax.set_xlabel('energy cutoff (Ha)')
 
-    ax.legend()
+    ax.legend(title='cell size', ncol=2)
     plt.tight_layout()
     plt.savefig('pbe_convergence_plot.png', facecolor=(1,1,1,0))
