@@ -1,5 +1,5 @@
-python KI
-=========
+Running
+=======
 To run a calculation, all that is required is 
 
 .. code-block:: bash
