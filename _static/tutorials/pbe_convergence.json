@@ -13,8 +13,7 @@
     {
         "system":
         {
-            "ecutwfc"               : 20.0,
-            "ecutrho"               : "4*ecutwfc"
+            "ecutwfc"               : 20.0
         },
         "atomic_species":
         {

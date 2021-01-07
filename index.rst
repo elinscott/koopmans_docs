@@ -10,14 +10,9 @@ This webpage is still under development. Come back soon!
    about
    theory
    installation
-   cp_koopmans.rst
-   python_ki.rst
-   kc_wann.rst
+   running
    tutorials
    links
    papers
    license
    contact
-
-CP Koopmans
-===========

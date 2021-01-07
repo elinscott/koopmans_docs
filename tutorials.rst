@@ -39,7 +39,7 @@ When you run the calculation you should get something like this:
   
   Converged parameters are ecutwfc = 50.0, cell_size = 1.3
 
-Note that ``cell_size = 1.3`` means that we need a cell 1.3 times larger than that provided in the ``.json`` input file.
+The code progressively tries higher and higher energy cutoffs, as well as larger and larger cells, until it arrives at the converged solution, with a ``ecutwfc`` of 50.0 Ha and a cell 1.3 times larger than that provided in the ``.json`` input file.
 
 The individual calculations reside in nested subdirectories. If you plot the HOMO energies from each of these, this is what you will get:
 
