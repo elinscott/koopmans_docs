@@ -6,6 +6,7 @@ Tutorials
 
 A simple KI calculation 
 ===================================
+To write
 
 Convergence testing
 ===============================
@@ -52,7 +53,47 @@ and we can see that indeed the calculation with ``ecutwfc = 50.0`` and ``cell_si
 
 Calculating screening parameters
 ============================================
+To write
+
 
 A bulk system
 =========================
 
+Calculating electron affinities for small anions
+================================================
+
+.. literalinclude:: _static/tutorials/o2_environ_dscf.json
+  :lines: 1-5
+  :linenos:
+
+The full input file can be downloaded `here <https://raw.githubusercontent.com/elinscott/koopmans_docs/main/_static/tutorials/o2_environ_dscf.json>`_
+
+.. code-block:: text
+
+  PBE ΔSCF WORKFLOW
+
+  Performing neutral calculations...
+  Running neutral/8/pbe... done
+  Running neutral/6/pbe... done
+  Running neutral/4/pbe... done
+  Running neutral/3.5/pbe... done
+  Running neutral/3/pbe... done
+  Running neutral/2.5/pbe... done
+  Running neutral/2/pbe... done
+  Running neutral/1/pbe... done
+
+  Performing charged calculations...
+  Running charged/8/pbe... done
+  Running charged/6/pbe... done
+  Running charged/4/pbe... done
+  Running charged/3.5/pbe... done
+  Running charged/3/pbe... done
+  Running charged/2.5/pbe... done
+  Running charged/2/pbe... failed to converge
+
+  WORKFLOW COMPLETE
+
+.. image:: _static/tutorials/o2_dscf_ea_result.png
+  :width: 800
+  :alt: Quartic fit to embedded energies of O2 to calculate its vertical electron affinity 
+  :align: center

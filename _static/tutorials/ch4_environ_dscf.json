@@ -1,0 +1,63 @@
+{
+  "workflow": {
+    "task": "environ_dscf"
+  },
+  "setup": {
+    "cell_parameters": {
+      "vectors": [
+        [ 26.5276, 0.0, 0.0 ],
+        [ 0.0, 26.5276, 0.0 ],
+        [ 0.0, 0.0, 26.5276 ]
+      ],
+      "units": "angstrom"
+    },
+    "atomic_positions": {
+      "positions": [
+        [ "C", "13.2638", "13.2638", "13.2638" ],
+        [ "F", "14.0276", "12.5", "14.0276" ],
+        [ "F", "12.5", "14.0276", "14.0276" ],
+        [ "F", "12.5", "12.5", "12.5" ],
+        [ "F", "14.0276", "14.0276", "12.5" ]
+      ],
+      "units": "angstrom"
+    },
+    "atomic_species": {
+      "species": [
+        [ "C", 1.0, "C_ONCV_PBE-1.0.upf" ],
+        [ "F", 1.0, "F_ONCV_PBE-1.0.upf" ] ]
+    },
+    "k_points": {
+      "kind": "gamma"
+    }
+  },
+  "pw": {
+    "control": {
+      "calculation": "scf",
+      "restart_mode": "from_scratch",
+      "wf_collect": true,
+      "outdir": "./TMP",
+      "prefix": "pbe"
+    },
+    "system": {
+      "ibrav": 0,
+      "nat": 5,
+      "ntyp": 2,
+      "nbnd": 20,
+      "starting_magnetization(1)": 0.0,
+      "ecutwfc": 80.0,
+      "ecutrho": 320.0,
+      "occupations": "smearing",
+      "degauss": 0.001,
+      "smearing": "gauss",
+      "nspin": 2,
+      "input_dft": "PBE",
+      "assume_isolated": "m-t"
+    },
+    "electrons": {
+      "conv_thr": 5e-13,
+      "mixing_mode": "plain",
+      "mixing_beta": 0.7,
+      "diagonalization": "david"
+    }
+  }
+}
