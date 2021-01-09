@@ -13,6 +13,6 @@ This webpage is still under development. Come back soon!
    running
    tutorials
    links
-   papers
+   references
    license
    contact

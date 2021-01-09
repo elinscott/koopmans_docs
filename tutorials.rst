@@ -51,22 +51,28 @@ The individual calculations reside in nested subdirectories. If you plot the HOM
 
 and we can see that indeed the calculation with ``ecutwfc = 50.0`` and ``cell_size = 1.3`` is the one where the energy of the HOMO goes within (and stays within) 0.01 eV of the most accurate calculation.
 
-Calculating screening parameters
-============================================
-To write
+..
+  Calculating screening parameters
+  ============================================
+  To write
 
 
-A bulk system
-=========================
+  A bulk system
+  =========================
 
 Calculating electron affinities for small anions
 ================================================
+.. tip:: To run this tutorial, you will need a version of ``pw.x`` with the `environ <https://environ.readthedocs.io/en/latest/>`_ patch installed.
+
+The ``koopmans`` package can also calculate the PBE electron affinities of small molecules using the method of Nattino *et al.*. These anions are typically unbound (wrongly) by PBE, which means we cannot perform a standard ΔSCF calculation. Instead, the molecule is embedded within a cavity and finite difference calculations are performed with increasingly small values of :math:`\varepsilon_\infty`. See :cite:`Nattino2019` for a more detailed description.
+
+Running these calculations is enabled with the ``environ_dscf`` task, and ``eps_cavity`` is a list of the trial values of :math:`\varepsilon_\infty` to use e.g.
 
 .. literalinclude:: _static/tutorials/o2_environ_dscf.json
-  :lines: 1-5
+  :lines: 2-5
   :linenos:
 
-The full input file can be downloaded `here <https://raw.githubusercontent.com/elinscott/koopmans_docs/main/_static/tutorials/o2_environ_dscf.json>`_
+The full input file can be downloaded `here <https://raw.githubusercontent.com/elinscott/koopmans_docs/main/_static/tutorials/o2_environ_dscf.json>`_. When you run this calculation, the output will be as follows:
 
 .. code-block:: text
 
@@ -93,7 +99,12 @@ The full input file can be downloaded `here <https://raw.githubusercontent.com/e
 
   WORKFLOW COMPLETE
 
+so we can see that for :math:`\varepsilon_\infty = 2` the anion became unstable, as expected. If we perform a quartic fit to the energies (following the example of Nattino *et al.*) we can extrapolate back to :math:`\varepsilon_\infty = 1` to obtain the electron affinity of 1.30 eV.
+
 .. image:: _static/tutorials/o2_dscf_ea_result.png
   :width: 800
   :alt: Quartic fit to embedded energies of O2 to calculate its vertical electron affinity 
   :align: center
+
+.. warning::
+  The `koopmans` implementation of this workflow differs from Nattino *et al.* in one major aspect: we use the same atomic positions for the anion as the neutral molecule. This means that we obtain *vertical* rather than *adiabatic* electron affinities. The reason for this choice is to be consistent with Koopmans spectral functionals, whose LUMO energies correspond to vertical electron affinities.

@@ -1,3 +1,0 @@
-Papers
-======
-For publications using Koopmans spectral functionals, please cite
