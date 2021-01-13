@@ -75,6 +75,7 @@ Running these calculations is enabled with the ``environ_dscf`` task, and ``eps_
 The full input file can be downloaded `here <https://raw.githubusercontent.com/elinscott/koopmans_docs/main/_static/tutorials/o2_environ_dscf.json>`_. When you run this calculation, the output will be as follows:
 
 .. code-block:: text
+
   $ koopmans o2_environ_dscf.json
   PBE ΔSCF WORKFLOW
 
