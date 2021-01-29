@@ -1,0 +1,131 @@
+<table id="uiTable" style="width:100%; text-align:left">
+   <tr>
+      <th>Keyword</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+   </tr>
+   <tr>
+      <td><code>file_hr</code></td>
+      <td>the name of the Hamiltonian file to read in</td>
+      <td><code>str</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>seedname</code></td>
+      <td>the seedname must be equal to the seedname used in the previous Wannier90 calculation. The code will look for a file called seedname.wout</td>
+      <td><code>str</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>alat_sc</code></td>
+      <td>the lattice parameter (in Bohr) of the supercell, as celldm(1) in QE. NB: it is important to put the supercell (and not the primitive cell) lattice parameter, otherwise the result will be wrong</td>
+      <td><code>float</code>/<code>int</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>nr1</code></td>
+      <td>units of repetition of the primitive cell within the supercell along the direction of a_1. Equivalently this has to match the number of k-points in the Monkhorst-Pack mesh along the direction of b_1.</td>
+      <td><code>int</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>nr2</code></td>
+      <td>units of repetition of the primitive cell within the supercell along the direction of a_2. Equivalently this has to match the number of k-points in the Monkhorst-Pack mesh along the direction of b_2.</td>
+      <td><code>int</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>nr3</code></td>
+      <td>units of repetition of the primitive cell within the supercell along the direction of a_3. Equivalently this has to match the number of k-points in the Monkhorst-Pack mesh along the direction of b_3.</td>
+      <td><code>int</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>w90_calc</code></td>
+      <td>Specifies the type of PW/Wannier90 calculation preceding the koopmans calculation. If the latter is done in a supercell at Gamma then w90_calc must be equal to 'sc', otherwise if it comes from a calculation with k-points it must be equal to 'pc'.
+</td>
+      <td><code>str</code></td>
+      <td><code>pc</code> (must be <code>pc</code>/<code>sc</code>)</td>
+   </tr>
+   <tr>
+      <td><code>do_map</code></td>
+      <td>if True, it realizes the map |m> --> |Rn>, that connects the Wannier functions in the supercell to those in the primitive cell. This is basically the unfolding procedure. It can be activated only if w90_calc='sc'</td>
+      <td><code>bool</code></td>
+      <td><code>False</code></td>
+   </tr>
+   <tr>
+      <td><code>use_ws_distance</code></td>
+      <td>if True, the real Wigner-Seitz distance between the Wannier functions centers is considered as in the Wannier90 code. In particular, this accounts for the periodic boundary conditions and it is crucial for a good interpolation when using coarse MP meshes or, equivalently, small supercells</td>
+      <td><code>bool</code></td>
+      <td><code>True</code></td>
+   </tr>
+   <tr>
+      <td><code>k_path</code></td>
+      <td>path in the Brillouin zone for the band structure. The logic is the crystal_b units in QE: the path must be defined by providing the initial and final point crystal coordinates of each line, followed by the number of points along the line.
+
+Example: path Gamma-X-Gamma with 10 points along each line
+
+	k_path :	[ [ 0.000, 0.000, 0.000, 10 ],
+	        	  [ 0.500, 0.000, 0.000, 10 ],
+	        	  [ 0.000, 0.000, 0.000,  1 ] ]
+
+The band structure is then written into a file called 'bands_interpolated.dat'.</td>
+      <td><code>list</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>smooth_int</code></td>
+      <td>if True, the smooth interpolation method is used. This consists of removing the DFT part of the hamiltonian from the full Koopmans hamiltonian and adding the DFT hamiltonian from a calculation with a denser k-points mesh. This works only for a non self-consistent Koopmans calculation using Wannier since, to be consistent, all the hamiltonians must be in the same gauge, i.e. the Wannier gauge</td>
+      <td><code>bool</code></td>
+      <td><code>False</code></td>
+   </tr>
+   <tr>
+      <td><code>smooth_int_factor</code></td>
+      <td>How many times denser the k-point mesh is than the regular k-point mesh for smooth integration</td>
+      <td><code>int</code></td>
+      <td><code>1</code></td>
+   </tr>
+   <tr>
+      <td><code>file_hr_coarse</code></td>
+      <td></td>
+      <td><code>str</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>file_hr_smooth</code></td>
+      <td></td>
+      <td><code>str</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>do_dos</code></td>
+      <td>if True, the density-of-states is interpolated along the input k_path. The DOS is written to a file called "dos_interpolated.dat"</td>
+      <td><code>bool</code></td>
+      <td><code>True</code></td>
+   </tr>
+   <tr>
+      <td><code>degauss</code></td>
+      <td>gaussian broadening (in eV) for the DOS interpolation, as in QE</td>
+      <td><code>str</code>/<code>float</code>/<code>int</code></td>
+      <td><code>0.05</code></td>
+   </tr>
+   <tr>
+      <td><code>nstep</code></td>
+      <td>number of steps for the plot of the interpolated DOS</td>
+      <td><code>int</code></td>
+      <td><code>1000</code></td>
+   </tr>
+   <tr>
+      <td><code>Emin</code></td>
+      <td>minimum energy for the plot of the interpolated DOS</td>
+      <td><code>str</code>/<code>float</code>/<code>int</code></td>
+      <td></td>
+   </tr>
+   <tr>
+      <td><code>Emax</code></td>
+      <td>maximum energy for the plot of the interpolated DOS</td>
+      <td><code>str</code>/<code>float</code>/<code>int</code></td>
+      <td></td>
+   </tr>
+</table>
