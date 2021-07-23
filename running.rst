@@ -58,7 +58,7 @@ The ``setup`` block contains variables common to all of the quantum espresso cal
 
 It uses the same keywords and cards as ``cp.x`` input files, with namelists and cards are provided as subdictionairies. The one exception to this rule is the ``k_points`` block, which is not a ``cp.x`` card but can still be provided here e.g.
 
-.. literalinclude:: _static/tutorials/bulk_si.json
+.. literalinclude:: _static/tutorials/si.json
   :lines: 27-32
 
 where ``kind`` can be either ``automatic`` or ``gamma``.
@@ -77,7 +77,7 @@ w90
 ^^^
 This block contains keywords specific to ``wannier90.x``, contained in two subdictionairies, ``occ`` and ``emp``, specifying the wannierization protocol for the occupied and empty manifolds e.g.
 
-.. literalinclude:: _static/tutorials/bulk_si.json
+.. literalinclude:: _static/tutorials/si.json
   :lines: 50-69
 
 pw2wannier

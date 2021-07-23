@@ -4,12 +4,22 @@ Tutorials
 .. tip::
   Before beginning, download the `pseudopotentials <https://github.com/elinscott/python_KI/tree/master/pseudos>`_ and set the environment variable ``ESPRESSO_PSEUDO_DIR`` to wherever they're located on your machine
 
-A simple KI calculation 
-===================================
-To write
+A simple KI calculation on a molecule
+=====================================
+In this tutorial, we will calculate the ionisation potential and electron affinity of ozone.
+
+.. literalinclude:: _static/tutorials/ozone.json
+  :linenos:
+
+A simple KI calculation on a solid
+==================================
+In this tutorial, we will calculate the KI bandstructure of bulk silicon.
+
+.. literalinclude:: _static/tutorials/si.json
+  :linenos:
 
 Convergence testing
-===============================
+===================
 In this tutorial, we will make use of the ``convergence`` task to determine how large a cell size and energy cutoff is required to converge the PBE energy of the highest occupied molecular orbital (HOMO) of a water molecule. In order to do this, our ``workflow`` block needs a few particular keywords:
 
 .. literalinclude:: _static/tutorials/pbe_convergence.json
