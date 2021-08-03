@@ -8,13 +8,13 @@ Koopmans is available to download on `github <https://github.com/epfl-theos/koop
 Installing
 ^^^^^^^^^^
 
-.. include:: ../README.rst
+.. include:: koopmans_readme.rst
     :start-line: 23
     :end-line: 54
 
 Customising
 ^^^^^^^^^^^
 
-.. include:: ../README.rst
+.. include:: koopmans_readme.rst
     :start-line: 68
     :end-line: 80
