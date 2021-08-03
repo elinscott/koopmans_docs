@@ -2,12 +2,15 @@
 Koopmans documentation
 **********************
 
-This webpage is still under development. Come back soon!
+``koopmans`` is a package for performing Koopmans spectral functional calculations with ``Quantum ESPRESSO``.
+
+.. warning::
+   This website is still under development!
 
 .. toctree::
    :maxdepth: 2
 
-   about
+   quick_start
    theory
    installation
    running

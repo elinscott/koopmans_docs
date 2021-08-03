@@ -1,3 +1,3 @@
 License
 #######
-Koopmans is distributed under the (license name), which can be found... insert link here
+``koopmans`` is distributed under the `GNU General Public License v3.0 <https://github.com/epfl-theos/koopmans/blob/master/LICENSE>`_

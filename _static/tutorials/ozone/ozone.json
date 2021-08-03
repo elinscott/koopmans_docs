@@ -4,8 +4,8 @@
     "method": "dscf",
     "periodic": false,
     "init_orbitals": "kohn-sham",
-    "frozen_orbitals": true,
-    "from_scratch": true
+    "from_scratch": true,
+    "n_max_sc_steps": 1
   },
   "setup": {
     "control": {
