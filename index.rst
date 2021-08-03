@@ -9,12 +9,13 @@ Koopmans documentation
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    quick_start
    theory
    installation
-   running
-   tutorials
+   running/running
+   tutorials/tutorials
    links
    references
    license
