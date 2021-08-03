@@ -9,7 +9,7 @@ To run a calculation, all that is required is
 
 Input file
 ----------
-The JSON input file contains the calculation parameters, divided into the following blocks: :ref:`workflow`, :ref:`setup`, :ref:`kcp`, :ref:`pw`, :ref:`w90`, and :ref:`pw2wannier`. These are explained below.
+The JSON input file contains the calculation parameters, divided into the following blocks: :ref:`workflow`, :ref:`setup`, :ref:`kcp`, :ref:`pw`, :ref:`w90`, :ref:`pw2wannier`, and :ref:`ui`. These are explained below.
 
 workflow
 ^^^^^^^^
@@ -18,35 +18,12 @@ The ``workflow`` block contains variables that define the details of the workflo
 .. raw:: html
 
    <center>
-   <input type="text" id="myInput" onkeyup="lookupTable()" placeholder="Search for keywords...", style="width:50%">
+   <input type="text" id="workflowInput" onkeyup="lookupTable(workflowInput, workflowTable)" placeholder="Search for keywords...", style="width:50%">
    </center>
    <br>
 
 .. raw:: html
-   :file: _static/python_ki_keywords/keywords.html
-
-.. raw:: html 
-
-   <script>
-   function lookupTable() {
-     // Declare variables
-     var input, filter, tab, tr, a, i, txtValue;
-     input = document.getElementById('myInput');
-     filter = input.value.toUpperCase();
-     tab = document.getElementById("keywordTable");
-     tr = tab.getElementsByTagName('tr');
-     // Loop through all list items, and hide those who don't match the search query
-     for (i = 1; i < tr.length; i++) {
-       a = tr[i].getElementsByTagName("td")[0].getElementsByTagName("code")[0];
-       txtValue = a.textContent || a.innerText;
-       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-         tr[i].style.display = "";
-       } else {
-         tr[i].style.display = "none";
-       }
-     }
-   }
-   </script>
+   :file: _static/python_ki_keywords/workflow_keywords.html
 
 setup
 ^^^^^
@@ -85,3 +62,42 @@ In this case both the occupied and empty manifolds will use ``sp3`` projections,
 pw2wannier
 ^^^^^^^^^^
 This block contains ``pw2wannier.x`` keywords, in a single dictionary with no subdictionairies.
+
+ui
+^^
+This block controls the unfolding and interpolation procedure for generating band structures and densities of states from Γ-only supercell calculations
+
+.. raw:: html
+
+   <center>
+   <input type="text" id="uiInput" onkeyup="lookupTable(uiInput, uiTable)" placeholder="Search for keywords...", style="width:50%">
+   </center>
+   <br>
+
+.. raw:: html
+   :file: _static/python_ki_keywords/ui_keywords.html
+
+.. raw:: html
+
+   <script>
+
+   function lookupTable(input, tab) {
+     // Declare variables
+     var input, filter, tab, tr, a, i, txtValue;
+     // input = document.getElementById(inputID);
+     filter = input.value.toUpperCase();
+     // tab = document.getElementById(tableID);
+     tr = tab.getElementsByTagName('tr');
+     // Loop through all list items, and hide those who don't match the search query
+     for (i = 1; i < tr.length; i++) {
+       a = tr[i].getElementsByTagName("td")[0].getElementsByTagName("code")[0];
+       txtValue = a.textContent || a.innerText;
+       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+         tr[i].style.display = "";
+       } else {
+         tr[i].style.display = "none";
+       }
+     }
+   }
+   </script>
+
