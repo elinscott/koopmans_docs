@@ -6,8 +6,8 @@ Tutorials
 
 .. toctree::
    
-    tutorial_1/tutorial_1
-    tutorial_2/tutorial_2
-    tutorial_3/tutorial_3
-    tutorial_4/tutorial_4
+    tutorials/tutorial_1
+    tutorials/tutorial_2
+    tutorials/tutorial_3
+    tutorials/tutorial_4
 
