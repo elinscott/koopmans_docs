@@ -7,7 +7,7 @@ The key ingredients in a Koopmans calculation
 
 The variational orbitals
 ------------------------
-The one important distinction that is worth making right away is that Koopmans functionals are not a density functional, but an *orbital-density-dependent functional theory* (ODDFT). This is because in addition to being dependent on the total density :math:`\rho` it is also dependent on the individual occupancies. Indeed, each orbital will be subjected to a different potential, and when we solve a Koopmans functional we must minimise the total energy with respect to the entire set of orbitals as opposed to just the total density.
+The one important distinction that is worth making right away is that Koopmans functionals are not density functionals, but *orbital-density-dependent* (ODD) functionals. This is because in addition to being dependent on the total density :math:`\rho` they are also dependent on the individual occupancies. Indeed, each orbital will be subjected to a different potential, and when we solve a Koopmans functional we must minimise the total energy with respect to the entire set of orbitals as opposed to just the total density.
 
 A further complication of ODDFTs is that we actually have *two* sets of orbitals that we must be careful to distinguish. The set of orbitals that minimise the total energy are the so-called *variational* orbitals. Because the leading term in an orbital's Koopmans potential is the negative of that orbital's self-Hartree energy, these variational orbitals tend to be very localised.
 
@@ -33,32 +33,69 @@ Going from a DFT to and ODDFT may seem like a bothersome complication but actual
 
 The screening parameters
 ------------------------
-
-Screening coefficients :math:`\{\alpha_i\}` must be determined first,
+In any Koopmans calculation, we must obtain the set of screening parameters :math:`\{\alpha_i\}`. As we discussed earlier, we would like the functional's total energy to be piecewise linear i.e. we would like quasiparticle energy to match the corresponding total energy differences. Specifically, we would like :math:`\varepsilon^\text{Koopmans}_i = \Delta E^\text{Koopmans}_i`, where
 
 .. math::
 
-   \frac{d E}{d f_i}
-   \approx
-   \alpha_i \frac{\partial E}{\partial f_i}
-   \Longrightarrow \varepsilon_i^\mathsf{Koopmans} = \frac{\partial E_\mathsf{Koopmans}}{\partial f_i}  \approx E_i(N-1) - E(N)}
+   \Delta E^\text{Koopmans}_i =
+   \begin{cases}
+      E^\text{Koopmans}(N) - E^\text{Koopmans}_i(N-1)
+      & \text{filled orbitals}\\
+      E^\text{Koopmans}_i(N+1) - E^\text{Koopmans}(N)
+      & \text{empty orbitals}
+   \end{cases}
 
-either (a) via :math:`\Delta`\ SCF calculations (using a supercell) or
-(b) via DFPT (using a primitive cell)
+where :math:`E^\text{Koopmans}_i(N\pm1)` is the total energy of the system where we add/remove an electron from variational orbital :math:`i` and allow the rest of the system to relax.
 
-
-:math:`\Delta E_i`, where :math:`\Delta E_i = E_i(N-1) - E(N)` for filled orbitals and :math:`\Delta E_i = E_i(N+1) - E(N)` for empty orbitals, and :math:`E_i(N\pm1)` is the total energy of the system where we add/remove an electron from orbital :math:`i` (and allow the rest of the electrons to relax).
-
+We will use this condition to determine the screening parameters `ab initio`. In order to do so, there are two potential approaches: (a) via :ref:`ΔSCF calculations <theory_dscf>` or (b) via :ref:`DFPT <theory_dfpt>`.
 
 .. _theory_dscf:
 
 ΔSCF
 ^^^^
 
+In this approach, we explicitly calculate all of the energy differences :math:`\Delta E_i^\text{Koopmans}` via a series of constrained Koopmans and DFT calculations. Specifically, given a starting guess :math:`\{\alpha^0_i\}` for the screening parameters, an improved guess for the screening parameters can be obtained via
+
+.. math::
+
+   \alpha^{n+1}_i =
+   \alpha^n_i \frac{\Delta E_i - \varepsilon_{i}^0(1)}{\varepsilon_{i}^{\alpha^n_i}(1) - \varepsilon_{i}^0(1)}
+
+for filled orbitals and
+
+.. math::
+
+   \alpha^{n+1}_i =
+   \alpha^n_i \frac{\Delta E_i - \varepsilon_{i}^0(0)}{\varepsilon_{i}^{\alpha^n_i}(0) - \varepsilon_{i}^0(0)}
+
+for empty orbitals, where
+
+.. math::
+
+   \varepsilon_{i}^{\alpha_i}(f) = \left.\frac{dE_\text{Koopmans}}{df_i}\right|_{f_i = f} = \left.\langle \varphi_i|\hat H_\text{DFT} + \alpha_i \hat v_i^\mathrm{Koopmans}|\varphi_i \rangle\right|_{f_i = f}
+
+All of these quantities for calculating :math:`\alpha^{n+1}_i` are obtained from constrained Koopmans and DFT calculations. Specifically, a :math:`N`-electron Koopmans calculation yields :math:`E^\text{Koopmans}(N)` and :math:`\varepsilon^{\alpha_i^n}_i`, a constrained :math:`N \pm 1`-electron calculation yields :math:`E^\text{Koopmans}_i(N \pm 1)`, and a DFT calculation yields :math:`\varepsilon_i^0`.
+
+Typically, very few iterations are required in order to reach self-consistency.
+
+.. note::
+
+   For a periodic system, this method for determining the screening parameters requires a supercell treatment. This is because the :math:`N \pm 1`-electron systems have a charged defect and a supercell is required in order to avoid spurious interactions between periodic images.
+
 .. _theory_dfpt:
 
 DFPT
 ^^^^
+
+TODO
+
+.. note::
+
+   Comment on scaling comparing the two methods
+
+.. note::
+
+   Comment on what is and isn't possible with the current formulation
 
 The flavour: KI, pKIPZ, or KIPZ
 -------------------------------
