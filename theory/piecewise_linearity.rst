@@ -59,3 +59,5 @@ That is, the Kohn-Sham HOMO eigenvalue is overestimated due to the presence of S
 It is not just the HOMO energy that is affected by SIE. By similar logic we can show that SIE affects all of the Kohn-Sham eigenvalues, and by extension it will detrimentally affect spectral properties such as densities of states, band structures, and optical spectra.
 
 Given these failures of semi-local DFT, the question becomes how can we relate Kohn-Sham eigenvalues to quasiparticles while addressing self-interaction? The answer: Koopmans functionals.
+
+TODO discuss Koopmans theorem
