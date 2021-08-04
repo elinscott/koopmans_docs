@@ -91,12 +91,12 @@ TODO
 
 .. note::
 
-   Comment on scaling comparing the two methods
+   TODO write note commenting on the scaling of the two methods
 
 .. note::
 
-   Comment on what is and isn't possible with the current formulation
+   TODO Comment on what is and isn't possible with the current implementation
 
 The flavour: KI, pKIPZ, or KIPZ
 -------------------------------
-KI vs KIPZ...
+TODO
