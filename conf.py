@@ -22,9 +22,9 @@ project = 'koopmans'
 copyright = '2020, Edward Linscott, Riccardo De Gennaro, and Nicola Colonna'
 author = 'Edward Linscott, Riccardo De Gennaro, and Nicola Colonna'
 language = None
-version = '0.0.3'
+version = '0.0.4'
 # The full version, including alpha/beta/rc tags
-release = '0.0.3a'
+release = '0.0.4a'
 
 # -- General configuration ---------------------------------------------------
 
