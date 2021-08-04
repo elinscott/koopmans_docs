@@ -38,14 +38,14 @@ that is, the gradient of :math:`E(N)` approaching :math:`N` from the left. In pr
 
 .. math::
 
-    \varepsilon^\textsf{exact}_{HO} = \left.\frac{\partial E\textsf{exact}}{\partial N}\right|_{N = N^-} = E^\textsf{exact}(N) - E^\textsf{exact}(N-1)
+    \varepsilon^\text{exact}_{HO} = \left.\frac{\partial E^\text{exact}}{\partial N}\right|_{N = N^-} = E^\text{exact}(N) - E^\text{exact}(N-1)
 
 
 However, we can see in the following figure that due to the erroneous curvature in the semi-local functional
 
 .. math::
 
-    \varepsilon^\textsf{sl}_{HO} = \left.\frac{\partial E^\textsf{sl}}{\partial N}\right|_{N = N^-} > E^\textsf{sl}(N) - E^\textsf{sl}(N-1)
+    \varepsilon^\text{sl}_{HO} = \left.\frac{\partial E^\text{sl}}{\partial N}\right|_{N = N^-} > E^\text{sl}(N) - E^\text{sl}(N-1)
 
 .. figure:: figures/fig_en_curve_sl_annotated_zoom.svg
     :align: center
