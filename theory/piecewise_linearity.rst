@@ -19,19 +19,43 @@ but in DFT we replace this orbital-dependent term with
 
 which ignores the :math:`i \neq j` of the sum. This would be perfectly fine of the xc-functional perfectly cancelled this erroneously included self-Hartree term, but most xc-functionals do not, and consequently KS particles tend to over-delocalise in an attempt to minimise the Coulomb repulsion they feel from their own density.
 
-More generally, DFT suffers from "many-body self-interaction error" (or "delocalisation error"). This manifests itself as an erroneous curvature in the total energy :math:`E(N)` of the system as a function of the total number of electrons :math:`N`.
+More generally, DFT suffers from "many-body self-interaction error" (or "delocalisation error"). This manifests itself as an erroneous curvature in the total energy :math:`E(N)` of the system as a function of the total number of electrons :math:`N`. Compare this to the exact functional, which we know should be piecewise-linear between the energy at integer occupancies.
 
-.. image:: figures/fig_en_curve_exact.svg
+.. figure:: figures/fig_en_curve_with_all.svg
+    :align: center
+    :width: 400
+    :alt: E versus N curve for the exact functional, semi-local DFT, and Hartree-Fock
 
-.. image:: figures/fig_en_curve_sl.svg
+    :math:`E(N)` for the exact functional, semi-local DFT, and Hartree-Fock
 
-.. image:: figures/fig_en_curve_sl_annotated.svg
+This erroneous curvature directly impacts the Kohn-Sham eigenvalues. For instance, consider the energy of the highest occupied molecular orbital (HOMO), which is given by
 
-.. image:: figures/fig_en_curve_sl_annotated_zoom.svg
+.. math::
 
-.. image:: figures/fig_en_curve_with_all.svg
+    \varepsilon_{HO} = \left.\frac{\partial E}{\partial N}\right|_{N = N^-}
+
+that is, the gradient of :math:`E(N)` approaching :math:`N` from the left. In principle, this energy should be equal to the (indeed we can see this for the exact functional, where the gradient is given by
+
+.. math::
+
+    \varepsilon^\textsf{exact}_{HO} = \left.\frac{\partial E\textsf{exact}}{\partial N}\right|_{N = N^-} = E^\textsf{exact}(N) - E^\textsf{exact}(N-1)
 
 
-Consequences for band gaps, densities, band structures, spectra...
+However, we can see in the following figure that due to the erroneous curvature in the semi-local functional
 
-How can we address self-interaction in a computationally efficient way? :math:`\longrightarrow` Koopmans spectral functionals
+.. math::
+
+    \varepsilon^\textsf{sl}_{HO} = \left.\frac{\partial E^\textsf{sl}}{\partial N}\right|_{N = N^-} > E^\textsf{sl}(N) - E^\textsf{sl}(N-1)
+
+.. figure:: figures/fig_en_curve_sl_annotated_zoom.svg
+    :align: center
+    :width: 400
+    :alt: close-up of the curvature of semi-local DFT and how it impacts quasiparticle energies
+
+    Close-up of :math:`E(N)` for semi-local DFT, showing the consequences of SIE for quasiparticle energies
+
+That is, the Kohn-Sham HOMO eigenvalue is overestimated due to the presence of SIE.
+
+It is not just the HOMO energy that is affected by SIE. By similar logic we can show that SIE affects all of the Kohn-Sham eigenvalues, and by extension it will detrimentally affect spectral properties such as densities of states, band structures, and optical spectra.
+
+Given these failures of semi-local DFT, the question becomes how can we relate Kohn-Sham eigenvalues to quasiparticles while addressing self-interaction? The answer: Koopmans functionals.
