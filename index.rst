@@ -11,12 +11,12 @@ Koopmans documentation
    :maxdepth: 2
    :hidden:
 
-   source/quick_start
-   source/theory
-   source/installation
-   source/running/running
-   source/tutorials/tutorials
-   source/links
-   source/references
-   source/license
-   source/contact
+   quick_start
+   theory
+   installation
+   running
+   tutorials
+   links
+   references
+   license
+   contact

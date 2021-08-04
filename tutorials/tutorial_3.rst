@@ -2,7 +2,7 @@ Tutorial 3: convergence testing
 ===============================
 In this tutorial, we will make use of the ``convergence`` task to determine how large a cell size and energy cutoff is required to converge the PBE energy of the highest occupied molecular orbital (HOMO) of a water molecule. In order to do this, our ``workflow`` block needs a few particular keywords:
 
-.. literalinclude:: pbe_convergence.json
+.. literalinclude:: tutorial_3/pbe_convergence.json
   :lines: 1-11
   :linenos:
   :emphasize-lines: 5, 7-9
@@ -34,7 +34,7 @@ The code progressively tries higher and higher energy cutoffs, as well as larger
 
 The individual calculations reside in nested subdirectories. If you plot the HOMO energies from each of these, this is what you will get:
 
-.. image:: pbe_convergence_plot.png
+.. image:: tutorial_3/pbe_convergence_plot.png
   :width: 800
   :alt: Plot of HOMO energy with respect to ecutwfc and cell size
   :align: center
