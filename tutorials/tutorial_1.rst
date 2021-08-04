@@ -208,7 +208,7 @@ Meanwhile, the electron affinity (EA) corresponds to the negative of the energy 
 
   .. literalinclude:: tutorial_1/read.py
 
-  Indeed, it is also possible to run the workflow rom within ``python`` (rather than calling ``koopmans`` from the command line)
+  Indeed, it is also possible to run the workflow from within ``python`` (rather than calling ``koopmans`` from the command line)
 
   .. literalinclude:: tutorial_1/run.py
 

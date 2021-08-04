@@ -1,22 +1,12 @@
 Theory
 ======
-Brief introduction to Koopmans functionals
+This section contains a brief introduction to Koopmans functionals.
 
+.. toctree::
 
-.. _theory_vorbs_vs_corbs:
+    theory/piecewise_linearity
+    theory/functionals
+    theory/ingredients
+    theory/limitations
 
-Variational orbitals vs canonical orbitals
-------------------------------------------
-
-Calculating screening parameters
---------------------------------
-
-.. _theory_dscf:
-
-ΔSCF
-^^^^
-
-.. _theory_dfpt:
-
-DFPT
-^^^^
+For more details, refer to our various :ref:`publications <references>`.
