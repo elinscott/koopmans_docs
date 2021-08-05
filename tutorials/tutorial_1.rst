@@ -7,7 +7,7 @@ In this tutorial, we will calculate the ionisation potential and electron affini
 The input
 ---------
 
-The input file for this calculation can be found in the repository under `examples/ozone/dscf/ozone.json <https://github.com/epfl-theos/koopmans/blob/master/examples/ozone/dscf/ozone.json>`_. Just to briefly highlight the most important details of the workflow block
+The input file for this calculation can be downloaded :download:`here <tutorial_1/ozone.json>`. Just to briefly highlight the most important details of the workflow block
 
 .. literalinclude:: tutorial_1/ozone.json
   :lines: 2-4
