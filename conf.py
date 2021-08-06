@@ -22,16 +22,16 @@ project = 'koopmans'
 copyright = '2020, Edward Linscott, Riccardo De Gennaro, and Nicola Colonna'
 author = 'Edward Linscott, Riccardo De Gennaro, and Nicola Colonna'
 language = None
-version = '0.0.1'
+version = '0.0.4'
 # The full version, including alpha/beta/rc tags
-release = '0.0.1a'
+release = '0.0.4a'
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['recommonmark', 'sphinx.ext.mathjax', 'sphinx.ext.autosectionlabel', 'sphinxcontrib.bibtex']
+extensions = ['recommonmark', 'sphinx.ext.mathjax', 'sphinx.ext.autosectionlabel', 'sphinxcontrib.bibtex', 'sphinx_toolbox.collapse']
 bibtex_bibfiles = ['refs.bib']
 
 # Add any paths that contain templates here, relative to this directory.
