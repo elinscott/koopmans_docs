@@ -86,8 +86,23 @@ Typically, very few iterations are required in order to reach self-consistency.
 
 DFPT
 ^^^^
+In this approach the energy is approximated as a quadratic function of the occupation number and the expression for the screening coefficients reduces to
 
-TODO
+.. math::
+ \alpha_i = \frac{d^2E_{DFT}/df_i^2}{\partial^2 E_{DFT}/\partial f_i^2} = \frac{\langle n_i | \epsilon^{-1} f_{\rm Hxc} | n_i \rangle}{\langle n_i | f_{\rm Hxc} | n_i \rangle}
+
+where :math:`\frac{d}{df_i}` and :math:`\frac{\partial}{\partial f_i}` represent variations done accounting for the orbitals relaxation or not, respectively. 
+:math:`\epsilon(\mathbf{r},\mathbf{r}')` is the microscopic dielectric function of the material,
+:math:`f_{\rm Hxc}(\mathbf{r},\mathbf{r}') = \delta^2 E_{Hxc}/ \delta \rho(\mathbf{r})\delta \rho(\mathbf{r}')` is the Hartree-exchange and correlation kernel,
+and :math:`n_i(\mathbf{r})=|\varphi_i(\mathbf{r})|^2` is the orbital density. The evaluation of the screening coefficient within this approach requires only 
+quantity available from a :math:`N`-electrons system calculation and has been implemented :cite:`Colonna2018` using the machinery of Density Functional 
+Perturbation Theory :cite:`Baroni2001`. The advantage of this approach compared to the ΔSCF is that thre is no need for a supercell treatment, and in the 
+case of peridoc solids a primitive cell implementaiton can be used :cite:`Colonna2021`. The limitations of this approch are
+
+1. the quadratic approximation, which however is in most of the case very accurate correctly capturing the leading Hartree contribution and leaving outside 
+   orders higher than the second one in the xc contribution. 
+2. it is only applicable to the KI functional, for KIPZ the implementation of the PZ kernel, i.e. the second derivative of the PZ enegy wrt the density would 
+   be needed and this is not implemented in common electronic structure codes. 
 
 .. note::
 
