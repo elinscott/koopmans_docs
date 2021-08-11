@@ -1,4 +1,4 @@
-.. figure:: _static/logos/logo_koopmans_black_on_transp_exorcised.png
+.. figure:: _static/logos/logo_koopmans_black_and_grey_on_transp_exorcised.png
    :width: 400
    :align: center
    :alt: Koopmans logo
