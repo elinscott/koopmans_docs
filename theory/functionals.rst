@@ -38,7 +38,7 @@ So, finally, here is the Koopmans functional:
    {+ f_i \int_0^1 \varepsilon_i(f) df}
    \right)
 
-The Koopmans functional is a corrective functional -- that is to say, we take some base DFT functional :math:`E_{DFT}` (typically a semi-local functional such as LDA or PBE), and we a corrective term. But what exactly is this corrective term? To understand where it comes from, consider the following figure
+The Koopmans functional is a corrective functional -- that is to say, we take some base DFT functional :math:`E_{DFT}` (typically a semi-local functional such as LDA or PBE), and we add a corrective term. But what exactly is this corrective term? To understand where it comes from, consider the following figure
 
 .. figure:: figures/fig_en_curve_koopmans_steps.gif
    :width: 400
