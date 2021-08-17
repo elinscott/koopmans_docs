@@ -1,6 +1,6 @@
 {
     "workflow": {
-        "task": "wannierise",
+        "task": "singlepoint",
         "functional": "ki",
         "periodic": true,
         "method": "dscf",
@@ -61,7 +61,7 @@
             "kpath": "LGXKG"
         },
         "control": {
-            "pseudo_dir": "../../../pseudos/"
+            "pseudo_dir": "../../../../pseudos/"
         },
         "system": {
             "ibrav": 2,
@@ -100,5 +100,8 @@
             "dis_froz_max": 11.5,
             "dis_win_max": 17.0
         }
+    },
+    "ui": {
+        "smooth_int_factor": 4
     }
 }

@@ -81,6 +81,17 @@ alpha
   
   Postprocessing
   ===============
+
+   Wannierisation
+   ==============
+    Running wannier/scf... done
+    Running wannier/nscf... done
+    Running wannier/occ/wann_preproc... done
+    Running wannier/occ/pw2wan... done
+    Running wannier/occ/wann... done
+    Running wannier/emp/wann_preproc... done
+    Running wannier/emp/pw2wan... done
+    Running wannier/emp/wann... done
    Running postproc/occ/ki... done
    Running postproc/emp/ki... done
 

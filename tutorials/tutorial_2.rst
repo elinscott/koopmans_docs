@@ -154,6 +154,9 @@ Having obtained a Wannierisation of silicon that we are happy with, we can proce
 
   Although we just discovered that a :math:`2\times2\times2` :math:`k`-point grid was inadequate for producing good Wannier functions, this next calculation is a lot more computationally intensive and will take a long time on most desktop computers. We therefore suggest that for the purposes of going through this tutorial you switch back to the small :math:`k`-point grid. (But for any proper calculations, always use high-quality Wannier functions!)
 
+
+Initialisation
+^^^^^^^^^^^^^^
 If you run this new input the output will be remarkably similar to that from the previous tutorial, with a couple of exceptions. At the start of the workflow you will see there is a Wannierisation procedure, much like we had earlier when we running with the ``wannierise`` task:
 
 .. literalinclude:: tutorial_2/si_ki.out
@@ -172,7 +175,9 @@ There is then an new "folding to supercell" subsection:
 
 The subsequent ΔSCF calculations, where we remove/add an electron from/to the system, require us to work in a supercell. These ``wan2odd`` calculations involve transforming the :math:`k`-dependent primitive cell results from previous calculuations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``.
 
-The calculation of the screening parameters proceeds as usual. The one difference you might notice here is that we are skipping the calculation of screening parameters for some of the orbitals e.g.
+Calculating the screening parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Having transformed into a supercell, the calculation of the screening parameters proceeds as usual. The one difference to tutorial 1 that you might notice at this step is that we are skipping the calculation of screening parameters for some of the orbitals:
 
 .. literalinclude:: tutorial_2/si_ki.out
   :lines: 36-46
@@ -182,11 +187,35 @@ The calculation of the screening parameters proceeds as usual. The one differenc
 
 The code is doing this because of what we provided for the ``orbital_groups`` in the input file:
 
-insert input file lines here
+.. literalinclude:: tutorial_2/si.json
+  :lines: 9-20
+  :lineno-start: 9
+  :emphasize-lines: 2-11
 
-The final difference is there is an additional preprocessing step:
+which tells the code to use the same parameter for orbitals belonging to the same group. In this instance we are calculating a single screening parameter for all four filled orbitals, and a single screening parameter for the empty orbitals.
+
+The final calculation and postprocessing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The final difference for the solids calculation is that there is an additional preprocessing step at the very end:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 82-85
+  :lines: 82-
   :lineno-start: 82
   :language: text
+
+Here, we transform back our results from the supercell sampled at :math:`\Gamma` to the primitive cell with :math:`k`-space sampling. This allows us to obtain a bandstructure. The extra Wannierisation step that is being performed is to assist the interpolation of the band structure in the primitive cell, and has been performed because in the input file we specified
+
+.. literalinclude:: tutorial_2/si.json
+  :lines: 104-106
+  :lineno-start: 104
+  :emphasize-lines: 2
+
+For more details on the "unfold and interpolate" procedure see :ref:`here <The ui block>`.
+
+Extracting the KI bandstructure and the bandgap of Si
+-----------------------------------------------------
+The bandstructure can be found in ``postproc/bands_interpolated.dat`` as a raw data file, but there is a more flexible way for plotting the final bandstructure using the python machinery of ``koopmans``:
+
+.. literalinclude:: tutorial_2/plot_bandstructure.py
+
+Running this script will generate a plot of the bandstructure (``ki_bandstructure.png``) as well as printing out the band gap. You should get a result around 1.35 eV. Compare this to the PBE result of 0.68 eV and the experimental value of 1.22 eV. If we were more careful with the Wannier function generation, our result would be even closer (indeed in Ref. :cite:`Nguyen2018` the KI band gap was found to be 1.22 eV!) 
