@@ -13,6 +13,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
+   about
    quick_start
    theory
    installation

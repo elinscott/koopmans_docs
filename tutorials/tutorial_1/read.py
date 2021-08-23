@@ -1,8 +1,7 @@
-from koopmans.io.jsonio import read_json
-  
+from koopmans import io
+
 # Load the workflow object
-with open('ozone.kwf', 'r') as fd:
-    wf = read_json(fd)
+wf = io.read('ozone.kwf')
 
 # Access the results from the very last calculation
 results = wf.all_calcs[-1].results

@@ -9,7 +9,7 @@ The ``setup`` block contains variables common to all of the quantum espresso cal
 It uses the same keywords and cards as ``kcp.x`` input files, with namelists and cards are provided as subdictionairies. The one exception to this rule is the ``k_points`` block, which is not a ``kcp.x`` card but can still be provided here e.g.
 
 .. literalinclude:: ../tutorials/tutorial_2/si.json
-  :lines: 47-60
+  :lines: 49-62
 
 where ``kind`` can be either ``automatic`` or ``gamma``. ``kpath`` specifies the path for band structures plotted during post-processing.
 
