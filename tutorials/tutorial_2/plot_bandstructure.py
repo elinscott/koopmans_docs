@@ -1,8 +1,7 @@
-from koopmans.io.jsonio import read_json
+from koopmans import io
 
 # Load the workflow object
-with open('si.kwf', 'r') as fd:
-    wf = read_json(fd)
+wf = io.read('si.kwf')
 
 # Access the band structure from the very last calculation
 results = wf.all_calcs[-1].results

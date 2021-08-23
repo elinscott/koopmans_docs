@@ -1,14 +1,14 @@
 Tutorial 2: a simple KI calculation on bulk silicon
 ===================================================
-In this tutorial, we will calculate the KI bandstructure of bulk silicon. The input file used for this calculation can be downloaded here :download:`here <tutorial_2/si.json>`.
+In this tutorial, we will calculate the KI bandstructure of bulk silicon. The input file used for this calculation can be downloaded :download:`here <tutorial_2/si.json>`.
 
 Wannierisation
 --------------
-There are two main differences between performing a Koopmans calculation on a bulk system vs. a molecule (as we did in tutorial 1). The first difference is that we use Wannier functions as our variational orbitals.
+While this calculation will bear a lot of similarity to the previous tutorial, there are several differences between performing a Koopmans calculation on a bulk system vs. a molecule. One major difference is that we use Wannier functions as our variational orbitals.
 
 What are Wannier functions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Most electronic-structure codes try to calculate the Bloch states :math:`\psi_{n\mathbf{k}}` of periodic systems (where :math:`n` is the band index and :math:`\mathbf{k}` the crystal momentum). However, other representations are equally valid. One such representation is the Wannier function (WF) basis. In contrast to the very delocalised Bloch states, WFs are spatially localised and as such represent a very convenient basis to work with for many applications. For our case, the fact that they are localised means that they are suitable for use as variational orbitals.
+Most electronic-structure codes try to calculate the Bloch states :math:`\psi_{n\mathbf{k}}` of periodic systems (where :math:`n` is the band index and :math:`\mathbf{k}` the crystal momentum). However, other representations are equally valid. One such representation is the Wannier function (WF) basis. In contrast to the very delocalised Bloch states, WFs are spatially localised and as such represent a very convenient basis to work with. In our case, the fact that they are localised means that they are suitable for use as variational orbitals.
 
 Wannier functions :math:`w_{n\mathbf{R}}(\mathbf{r})` can be written in terms of a transformation of the Bloch states:
 
@@ -25,7 +25,7 @@ Wannier functions :math:`w_{n\mathbf{R}}(\mathbf{r})` can be written in terms of
   \mathrm{d} \mathbf{k}
   \end{equation}
 
-where our Wannier functions belong to a particular lattice site :math:`\mathbf{R}`, :math:`V` is the unit cell volume, the integral is over the Brillouin zone (BZ), and :math:`U^{(\mathbf{k})}_{mn}` defines a unitary rotation that mixes the Bloch states with crystal momentum :math:`\mathbf{k}`. Crucially, this matrix is not uniquely defined -- indeed, it represents a freedom of the transformation that we can exploit.
+where our Wannier functions belong to a particular lattice site :math:`\mathbf{R}`, :math:`V` is the unit cell volume, the integral is over the Brillouin zone (BZ), and :math:`U^{(\mathbf{k})}_{mn}` defines a unitary rotation that mixes the Bloch states with crystal momentum :math:`\mathbf{k}`. Crucially, this matrix :math:`U^{(\mathbf{k})}_{mn}` is not uniquely defined --- indeed, it represents a freedom of the transformation that we can exploit.
 
 We choose our :math:`U^{(\mathbf{k})}_{mn}` that gives rise to WFs that are "maximially localised". We quantify the spread :math:`\Omega` of a WF as
 
@@ -51,15 +51,15 @@ The Wannier functions that minimise this spread are called maximally localised W
 
 How do I calculate Wannier functions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-MLWFs can be calculated with `Wannier90 <http://www.wannier.org/>`_, an open-source code that is distributed with ``Quantum ESPRESSO``.
+MLWFs can be calculated with `Wannier90 <http://www.wannier.org/>`_, an open-source code that is distributed with ``Quantum ESPRESSO``. Performing a Wannierisation with Wannier90 requires a series of calculations to be performed with ``pw.x``, ``wannier90.x``, and ``pw2wannier90.x``. This workflow is automated within ``koopmans``, as we will see in this tutorial.
 
 .. note::
 
-  This tutorial will not discuss in detail how perfrom a Wannierisation with Wannier90. The Wannier90 website contains lots of good `tutorials <http://www.wannier.org/support/>`_ on this topic.
+  This tutorial will not discuss in detail how perfrom a Wannierisation with Wannier90. The Wannier90 website contains lots of excellent `tutorials <http://www.wannier.org/support/>`_.
 
-  The one important distinction to make for Koopmans calculations -- as opposed to many of the Wannier90 tutorials -- is that we need to separately Wannierise the occupied and empty manifolds.
+  One important distinction to make for Koopmans calculations --- as opposed to many of the Wannier90 tutorials --- is that we need to separately Wannierise the occupied and empty manifolds.
 
-Performing a Wannierisation with Wannier90 requires a series of calculations to be performed with ``pw.x``, ``wannier90.x``, and ``pw2wannier90.x``. This workflow is automated within ``koopmans``, as we will see in this tutorial. Let's now inspect this tutorial's :download:`input file <tutorial_2/si.json>`. At the top you will see that
+Let's now inspect this tutorial's :download:`input file <tutorial_2/si.json>`. At the top you will see that
 
 .. literalinclude:: tutorial_2/si.json
   :lines: 2-4
@@ -78,7 +78,7 @@ We run this calculation as per usual:
 
 .. code-block:: bash
 
-  koopmans si.json | tee si.out
+  koopmans si.json | tee si_wannierise.out
 
 After the usual header, you should see something like the following:
 
@@ -112,7 +112,7 @@ These various calculations that are required to obtain the MLWFs of bulk silicon
 
 |
 
-The main output files of interest in ``wannier/`` are files ``occ/wann.wout`` and ``emp/wann.wout``, which contain the output of ``wannier90.x`` for the Wannierisation of the occupied and empty manifolds. If you inspect ``wannier/occ/wann.wout`` you will be able to see a lot of starting information, and then under a heading like
+The main output files of interest in ``wannier/`` are files ``occ/wann.wout`` and ``emp/wann.wout``, which contain the output of ``wannier90.x`` for the Wannierisation of the occupied and empty manifolds. If you inspect either of these files you will be able to see a lot of starting information, and then under a heading like
 
 .. code-block::
 
@@ -127,7 +127,7 @@ How do I know if the Wannier functions I have calculated are "good"?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Performing a Wannierisation calculation is not a straightforward procedure, and requires the tweaking of the Wannier90 input parameters in order to obtain a "good" set of Wannier functions.
 
-One good check is to see if an interpolated bandstructure generated by the MLWFs resembles an explicitly-calculated band structure. You might have noticed that ``koopmans`` also generated a file called ``interpolated_bandstructure_2x2x2.png``. It should look something like this:
+One check is to see if an interpolated bandstructure generated by the MLWFs resembles an explicitly-calculated band structure. (For an explanation of how one can use Wannier functions to interpolate band structures, refer to Ref. :cite:`Marzari2012`.) You might have noticed that when we ran ``koopmans`` earlier it also generated a file called ``interpolated_bandstructure_2x2x2.png``. It should look something like this:
 
 .. figure:: tutorial_2/interpolated_bandstructure_2x2x2.png
   :width: 400
@@ -148,11 +148,11 @@ TODO: add discussion of real/imaginary ratio of WFs
 
 The KI calculation
 ------------------
-Having obtained a Wannierisation of silicon that we are happy with, we can proceed with the KI calculation. In order to do this simply change the ``task`` argument from ``wannierise`` to ``singlepoint``.
+Having obtained a Wannierisation of silicon that we are happy with, we can proceed with the KI calculation. In order to do this simply change the ``task`` keyword in the input file from ``wannierise`` to ``singlepoint``.
 
 .. tip::
 
-  Although we just discovered that a :math:`2\times2\times2` :math:`k`-point grid was inadequate for producing good Wannier functions, this next calculation is a lot more computationally intensive and will take a long time on most desktop computers. We therefore suggest that for the purposes of going through this tutorial you switch back to the small :math:`k`-point grid. (But for any proper calculations, always use high-quality Wannier functions!)
+  Although we just discovered that a :math:`2\times2\times2` :math:`k`-point grid was inadequate for producing good Wannier functions, this next calculation is a lot more computationally intensive and will take a long time on most desktop computers. We therefore suggest that for the purposes of this tutorial you switch back to the small :math:`k`-point grid. (But for any proper calculations, always use high-quality Wannier functions!)
 
 
 Initialisation
@@ -160,7 +160,7 @@ Initialisation
 If you run this new input the output will be remarkably similar to that from the previous tutorial, with a couple of exceptions. At the start of the workflow you will see there is a Wannierisation procedure, much like we had earlier when we running with the ``wannierise`` task:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 15-34
+  :lines: 15-28
   :lineno-start: 15
   :language: text
 
@@ -173,7 +173,8 @@ There is then an new "folding to supercell" subsection:
   :lineno-start: 29
   :language: text
 
-The subsequent ΔSCF calculations, where we remove/add an electron from/to the system, require us to work in a supercell. These ``wan2odd`` calculations involve transforming the :math:`k`-dependent primitive cell results from previous calculuations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``.
+In order to understand what these calculations are doing, we must think ahead to theThe next step in the calculation will be to calculate the screening parameters using the ΔSCF method (see the ``method`` keyword in the input file)
+  The subsequent ΔSCF calculations, where we remove/add an electron from/to the system, require us to work in a supercell. These ``wan2odd`` calculations involve transforming the :math:`k`-dependent primitive cell results from previous calculuations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``.
 
 Calculating the screening parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
