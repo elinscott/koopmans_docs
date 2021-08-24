@@ -1,7 +1,7 @@
 {
     "workflow":
     {
-        "functional"               : "pbe",
+        "functional"               : "dft",
         "task"                     : "convergence",
         "from_scratch"             : true,
         "convergence_observable"   : "homo energy",

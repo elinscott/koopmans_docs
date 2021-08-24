@@ -1,17 +1,18 @@
 from glob import glob
 from koopmans import io
 import matplotlib.pyplot as plt
-import aesthetics
 
 if __name__ == '__main__':
 
-    calcs = []
-    for fname in glob('*/*/*.cpo'):
-        fname = fname.replace('.cpo', '')
-        calc = io.load_calculator(fname)
-        calc.cell_size = calc.calc.atoms.cell[0, 0] 
-        calcs.append(calc)
+    # Read in the workflow
+    wf = io.read('pbe_convergence.kwf')
+    calcs = wf.all_calcs
 
+    # Adding cell_size attribute to make things easier
+    for calc in calcs:
+        calc.cell_size = calc.calc.atoms.cell[0, 0]
+
+    # Extracting the list of ecutwfcs and cell sizes tested
     ecutwfcs = sorted(list(set([c.ecutwfc for c in calcs])))
     cell_sizes = sorted(list(set([c.cell_size for c in calcs])))
 
@@ -36,4 +37,4 @@ if __name__ == '__main__':
 
     ax.legend(title='cell size', ncol=2)
     plt.tight_layout()
-    plt.savefig('pbe_convergence_plot.png', facecolor=(1,1,1,0))
+    plt.savefig('convergence.png', facecolor=(1, 1, 1, 0))
