@@ -129,8 +129,84 @@ where :math:`N_{\rm el}^{\rm SC}` is the number of electrons in the SC. The DFPT
 (:math:`N_{\mathbf{k}} {N_{\rm el}^{\rm PC}}^3`), times the number of independent monochromatic perturbations (:math:`N_{\mathbf{q}}`). Using 
 the relation :math:`N_{\rm el}^{\rm SC}=N_{\mathbf{k}}N_{\rm el}^{\rm PC}`, and the fact that :math:`N_{\mathbf{q}}=N_{\mathbf{k}}`, the ratio between the 
 SC and PC computational times is :math:`T^{\rm SC}/T^{\rm PC} \propto N_{\mathbf{q}}`. Therefore as the supercell size (and, equivalently, 
-the number of $\bq$-points in the PC) increases, the PC-DFPT approach becomes more and more computationally convenient.
+the number of :math:`\mathbf{q}`-points in the PC) increases, the PC-DFPT approach becomes more and more computationally convenient.
+
+
 
 The flavour: KI, pKIPZ, or KIPZ
 -------------------------------
-TODO
+As we have seen KC functionals are constructed starting from the exact or an approximate DFT energy functional :math:`E^{\rm DFT}` 
+(the "base" functional) and replacing, orbital-by-orbital, the contribution to the total DFT energy that is not linear in the fractional
+orbital occupation with one that is linear:
+
+.. math:: 
+
+    & E^{\rm KC} =  E^{\rm DFT} + \sum_{i} \alpha_i \Pi^{\rm KC}_i\;, \label{kc_gen} \\
+    & \Pi_i^{\rm KC} = -\int_0^{f_i} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds + f_i \eta_i\;. \label{kc_gen1}
+
+Here, :math:`\hat{H}^{\rm DFT}(s)` is the KS Hamiltonian of the underlying density functional (exact or approximated) calculated with a fractional 
+occupation :math:`s` in orbital :math:`\varphi_i`, and :math:`\alpha_i` are screening coefficients introduced to ensure the linearity is 
+preserved when taking into account the response and relaxation of all other orbitals :math:`\{\varphi_{j\neq i}\}`. 
+The slope :math:`\eta_i` in the linear Koopmans' term can be chosen in a number of ways, leading to different KC flavors. 
+In KI the slope :math:`\eta_i` is chosen as the total energy difference of two adjacent electronic configurations with integer occupations:
+
+.. math::
+    \eta_i^{\rm KI} = & E^{\rm DFT}[f_i=1]-E^{\rm DFT}[f_i=0] \nonumber \\
+                  = & \int_0^{1} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds;
+                  \label{eta_ki}
+
+the explicit expression for the unscreened KI Koopmans' correction becomes thus
+
+.. math::
+ \Pi_i^{\rm KI} = -\int_0^{f_i} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds + f_i \int_0^{1} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds\;,
+
+
+where it can be seen that at integer occupations :math:`\Pi^{\rm KI}_i=0`, and the KI functional becomes identical to its base functional, 
+independently from the screening coefficients. The KI functional thus preserves exactly the potential energy surface of the base functional, 
+including that of the exact DFT functional (if one had it); its values at fractional occupations are instead different 
+(except when the highest occupied state is concerned), and so are the derivatives calculated at integer occupations - hence the effect on
+spectral properties.
+
+In KIPZ the slope :math:`\eta_i` is also chosen as the total energy difference of two adjacent electronic configurations with integer 
+occupations, but this time using the Perdew-Zunger (PZ) self-interaction corrected (SIC) functional applied onto the  approximate DFT base
+functional. We have
+
+.. math::
+    \eta_i^{\rm KIPZ} = & E^{\rm PZ}[f_i=1]-E^{\rm PZ}[f_i=0] \nonumber \\
+                  = & \int_0^{1} \langle \varphi_i | \hat{H}_i^{\rm PZ}(s) | \varphi_i \rangle ds,
+                  \label{eta_kipz}
+
+providing the explicit expression for the unscreened :math:`\Pi_i^{\rm KIPZ}` correction
+
+.. math::
+ \Pi_i^{\rm KIPZ} = -\int_0^{f_i} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds + f_i \int_0^{1} \langle \varphi_i | \hat{H}^{\rm PZ}_i(s) | \varphi_i \rangle ds\;.
+
+where :math:`\hat{H}_i^{\rm PZ}(s) = \hat{H}^{\rm DFT}(s) - \hat{v}^{\rm DFT}_{\rm Hxc}[\:s\:|\varphi_i(\mathbf{r})|^2\:]`, 
+with :math:`-\hat{v}^{\rm DFT}_{\rm Hxc}[\:s\:|\varphi_i(\mathbf{r})|^2\:]` the PZ self-interaction correction for the 
+:math:`i^{\rm th}` orbital, that subtracts out the sum of the Hartree and exchange-correlation potentials for that orbital,
+that has occupation :math:`s` and orbital density :math:`s\:|\varphi_i(\mathbf{r})|^2`.
+Note that in the unscreened case (:math:`\alpha_i = 1`) the KIPZ functional can be thought of as the KI correction
+applied to the PZ-SIC functional (this can be verified by replacing the base DFT functional and Hamiltonian with its PZ-SIC 
+counterparts). However, in the general case of :math:`\alpha_i \ne 1` the KIPZ functional form implies also scaling each PZ 
+self-interaction correction with its own screening coefficient. At integer occupations the KIPZ functional thus results into a
+scaled PZ-SIC functional; this is a desirable property since the bare PZ self-interaction correction tends to overcorrect the base 
+functional :cite:`vydrov2004,vydrov2005` and introducing a scaling parameter often improves the energetic and 
+thermochemistry :cite:`Jonsson_JCP_2012,vydrov_scaling_down_PZ,jonsson_simulation_2011`. 
+The KIPZ screening parameters thus plays a dual role; they ensure linearity when taking into account orbital relaxations and 
+acts as physically motivated scaling parameters for the PZ corrections (we note that further refinements could use different screening 
+parameters to impose PWL, and to impose correctly charge transfer or polarizability). 
+
+In summary, these two approaches lead to two functionals that depend only on orbital densities with the following final expressions 
+for the unscreened KI and KIPZ corrections :cite:`Borghi2014`:
+
+.. math::
+     \Pi^{\rm KI}_i &=  E_{\rm Hxc} [\rho-\rho_i] -E_{\rm Hxc}[\rho] \nonumber \\      
+     &+f_i \Big[ E_{\rm Hxc}[\rho-\rho_i+n_i] -E_{\rm Hxc}[\rho-\rho_i] \Big]\label{Eq:KC_KI}, \\
+    %
+     \Pi^{\rm KIPZ}_i &= \Pi^{\rm KI}_i -f_i E_{\rm Hxc} [n_i]\label{Eq:KC_KIPZ},
+
+having defined :math:`\rho_i(\mathbf{r}) = f_i\:|\varphi_i(\mathbf{r})|^2` and :math:`n_i(\mathbf{r}) = |\varphi_i(\mathbf{r})|^2`, 
+and with :math:`E_{\rm Hxc}` denoting the Hartree and exchange-correlation energy corresponding to the underlying base functional.
+As mentioned, the orbital-dependent screening coefficients :math:`\alpha_{i}` account for electronic screening and orbitals relaxation;
+if these were all set to be equal to one, the KC functionals would fulfill the Koopmans' condition at frozen orbitals, rather than at 
+relaxed orbitals.
