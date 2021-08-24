@@ -17,7 +17,7 @@ but in DFT we replace this orbital-dependent term with
 
     \Phi(\mathbf{r}) = \int d\mathbf{r}' \frac{\rho(\mathbf{r})}{\mathbf{r} - \mathbf{r'}}
 
-which ignores the :math:`i \neq j` of the sum. This would be perfectly fine of the xc-functional perfectly cancelled this erroneously included self-Hartree term, but most xc-functionals do not, and consequently KS particles tend to over-delocalise in an attempt to minimise the Coulomb repulsion they feel from their own density.
+which ignores the :math:`i \neq j` of the sum. This would be perfectly fine if the xc-functional perfectly cancelled this self-Hartree term, but most xc-functionals do not. Consequently, KS particles tend to over-delocalise in order to minimise the Coulomb repulsion they feel from their own density.
 
 More generally, DFT suffers from "many-body self-interaction error" (or "delocalisation error"). This manifests itself as an erroneous curvature in the total energy :math:`E(N)` of the system as a function of the total number of electrons :math:`N`. Compare this to the exact functional, which we know should be piecewise-linear between the energy at integer occupancies.
 
