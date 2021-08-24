@@ -173,8 +173,7 @@ There is then an new "folding to supercell" subsection:
   :lineno-start: 29
   :language: text
 
-In order to understand what these calculations are doing, we must think ahead to theThe next step in the calculation will be to calculate the screening parameters using the ΔSCF method (see the ``method`` keyword in the input file)
-  The subsequent ΔSCF calculations, where we remove/add an electron from/to the system, require us to work in a supercell. These ``wan2odd`` calculations involve transforming the :math:`k`-dependent primitive cell results from previous calculuations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``.
+In order to understand what these calculations are doing, we must think ahead to the next step in our calculation, where we will calculate the screening parameters using the ΔSCF method. These calculations, where we remove/add an electron from/to the system, require us to work in a supercell. This means that we must transform the :math:`k`-dependent primitive cell results from previous calculations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``. This is precisely what the above ``wann2odd`` calculations do.
 
 Calculating the screening parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
