@@ -1,26 +1,29 @@
-from glob import glob
 from koopmans import io
 import matplotlib.pyplot as plt
-import aesthetics
 
 if __name__ == '__main__':
 
-    calcs = []
-    for fname in glob('*/*/*.cpo'):
-        fname = fname.replace('.cpo', '')
-        calc = io.load_calculator(fname)
-        calc.cell_size = calc.calc.atoms.cell[0, 0] 
-        calcs.append(calc)
+    # Read in the workflow
+    wf = io.read('h2o_conv.kwf')
+    calcs = wf.all_calcs
 
+    # Adding cell_size attribute to make things easier
+    for calc in calcs:
+        calc.cell_size = calc.calc.atoms.cell[0, 0]
+
+    # Extracting the list of ecutwfcs and cell sizes tested
     ecutwfcs = sorted(list(set([c.ecutwfc for c in calcs])))
     cell_sizes = sorted(list(set([c.cell_size for c in calcs])))
 
-    fig, ax = plt.subplots()
+    # Creating the figure
+    _, ax = plt.subplots()
 
+    # Extract the reference HOMO level from the most accurate calculation
     [reference_calc] = [c for c in calcs if c.ecutwfc == max(ecutwfcs) and c.cell_size == max(cell_sizes)]
     ref_homo = reference_calc.results['homo_energy']
 
     for cell_size in cell_sizes:
+        # Plot a line of delta e_HOMO for this particular cell size
         selected_calcs = sorted([c for c in calcs if c.calc.atoms.cell[0, 0] == cell_size], key=lambda x: x.ecutwfc)
         assert [c.ecutwfc for c in selected_calcs] == ecutwfcs
         x = ecutwfcs
@@ -31,9 +34,14 @@ if __name__ == '__main__':
         cell_size /= min(cell_sizes)
         plt.semilogy(x, y, 'o-', label=f'{cell_size:.1f}')
 
+    # Plot the convergence threshold
+    ax.axhline(0.01, c='grey', ls='--')
+
+    # Figure aesthetics
     ax.set_ylabel(r'$|\Delta\varepsilon_{HOMO}|$ (eV)')
     ax.set_xlabel('energy cutoff (Ha)')
-
     ax.legend(title='cell size', ncol=2)
     plt.tight_layout()
-    plt.savefig('pbe_convergence_plot.png', facecolor=(1,1,1,0))
+
+    # Save the figure
+    plt.savefig('convergence.png', facecolor=(1, 1, 1, 0))

@@ -1,16 +1,19 @@
-**********************
-Koopmans documentation
-**********************
+.. figure:: _static/logos/logo_koopmans_black_and_grey_on_transp_exorcised.png
+   :width: 400
+   :align: center
+   :alt: Koopmans logo
 
-``koopmans`` is a package for performing Koopmans spectral functional calculations with ``Quantum ESPRESSO``.
+   a package for performing Koopmans spectral functional calculations with ``Quantum ESPRESSO``
 
 .. warning::
    This website is still under development!
 
+Contents
+--------
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
+   about
    quick_start
    theory
    installation

@@ -4,13 +4,13 @@
   author = {Borghi, Giovanni and Ferretti, Andrea and Nguyen, Ngoc Linh and Dabo, Ismaila and Marzari, Nicola},
   year = {2014},
   month = aug,
+  journal = {Physical Review B},
   volume = {90},
+  number = {7},
   pages = {075135},
   publisher = {{American Physical Society}},
   issn = {1098-0121},
-  doi = {10.1103/PhysRevB.90.075135},
-  journal = {Physical Review B},
-  number = {7}
+  doi = {10.1103/PhysRevB.90.075135}
 }
 
 @article{Borghi2015,
@@ -18,14 +18,14 @@
   author = {Borghi, Giovanni and Park, Cheol Hwan and Nguyen, Ngoc Linh and Ferretti, Andrea and Marzari, Nicola},
   year = {2015},
   month = apr,
+  journal = {Physical Review B - Condensed Matter and Materials Physics},
   volume = {91},
+  number = {15},
   pages = {155112},
   publisher = {{American Physical Society}},
   issn = {1550235X},
   doi = {10.1103/PhysRevB.91.155112},
-  abstract = {Orbital-density-dependent functionals, such as the Perdew-Zunger or the Koopmans-compliant functionals, are used to remove unphysical self-interaction energies and to restore missing piece-wise linearity in approximate formulations of density-functional theory (DFT). At variance with functionals of the total density, orbital-density-dependent functionals are typically not invariant with respect to unitary transformations of the occupied states. Such additional degrees of freedom require an extension of established approaches for direct minimization that preserve their numerical robustness and efficiency, and make it possible to apply these advanced electronic-structure functionals to large or complex systems. In this work we adapt the ensemble-DFT algorithm [N. Marzari, D. Vanderbilt, and M. C. Payne, Phys. Rev. Lett. 79, 1337 (1997)PRLTAO0031-900710.1103/PhysRevLett.79.1337] to the case of orbital-density-dependent functionals, partitioning the variational problem into a nested loop of (i) minimizations with respect to unitary transformations at a fixed orbital manifold, that lead to a projected, unitary-covariant functional of the orbitals only that enforces the Pederson condition and (ii) variational optimization of the orbital manifold for this projected functional. We discuss in detail both general and functional-dependent trends and suggest a procedure to efficiently exploit the combination of the different minimization strategies. The overall formulation allows for a stable, robust, and efficient algorithm, yielding great improvements over conventional techniques.},
-  journal = {Physical Review B - Condensed Matter and Materials Physics},
-  number = {15}
+  abstract = {Orbital-density-dependent functionals, such as the Perdew-Zunger or the Koopmans-compliant functionals, are used to remove unphysical self-interaction energies and to restore missing piece-wise linearity in approximate formulations of density-functional theory (DFT). At variance with functionals of the total density, orbital-density-dependent functionals are typically not invariant with respect to unitary transformations of the occupied states. Such additional degrees of freedom require an extension of established approaches for direct minimization that preserve their numerical robustness and efficiency, and make it possible to apply these advanced electronic-structure functionals to large or complex systems. In this work we adapt the ensemble-DFT algorithm [N. Marzari, D. Vanderbilt, and M. C. Payne, Phys. Rev. Lett. 79, 1337 (1997)PRLTAO0031-900710.1103/PhysRevLett.79.1337] to the case of orbital-density-dependent functionals, partitioning the variational problem into a nested loop of (i) minimizations with respect to unitary transformations at a fixed orbital manifold, that lead to a projected, unitary-covariant functional of the orbitals only that enforces the Pederson condition and (ii) variational optimization of the orbital manifold for this projected functional. We discuss in detail both general and functional-dependent trends and suggest a procedure to efficiently exploit the combination of the different minimization strategies. The overall formulation allows for a stable, robust, and efficient algorithm, yielding great improvements over conventional techniques.}
 }
 
 @article{Colonna2018,
@@ -33,17 +33,17 @@
   author = {Colonna, Nicola and Nguyen, Ngoc Linh and Ferretti, Andrea and Marzari, Nicola},
   year = {2018},
   month = may,
+  journal = {Journal of Chemical Theory and Computation},
   volume = {14},
+  number = {5},
+  eprint = {1711.04485},
+  eprinttype = {arxiv},
   pages = {2549--2557},
   publisher = {{American Chemical Society}},
   issn = {15499626},
   doi = {10.1021/acs.jctc.7b01116},
   abstract = {Electronic-structure functionals that include screening effects, such as Hubbard or Koopmans' functionals, are required to describe the response of a system to the fractional addition or removal of an electron from an orbital or a manifold. Here, we present a general method to incorporate screening based on linear-response theory, and we apply it to the case of orbital-by-orbital screening of Koopmans' functionals. We illustrate the importance of such generalization when dealing with challenging systems containing orbitals with very different chemical character, also highlighting the simple dependence of the screening on the localization of the orbitals. We choose a set of 46 transition-metal complexes for which experimental data and accurate many-body perturbation theory calculations are available. When compared to experiment, results for ionization potentials show a very good performance, with a mean absolute error of 0.2 eV, comparable to the most accurate many-body perturbation theory approaches. These results reiterate the role of Koopmans-compliant functionals as simple and accurate quasiparticle approximations to the exact spectral functional, bypassing diagrammatic expansions and relying only on the physics of the local density or generalized-gradient approximation.},
-  archivePrefix = {arXiv},
-  eprint = {1711.04485},
-  eprinttype = {arxiv},
-  journal = {Journal of Chemical Theory and Computation},
-  number = {5}
+  archiveprefix = {arXiv}
 }
 
 @article{Colonna2019,
@@ -51,14 +51,14 @@
   author = {Colonna, Nicola and Nguyen, Ngoc Linh and Ferretti, Andrea and Marzari, Nicola},
   year = {2019},
   month = mar,
+  journal = {Journal of Chemical Theory and Computation},
   volume = {15},
+  number = {3},
   pages = {1905--1914},
   publisher = {{American Chemical Society}},
   issn = {1549-9618},
   doi = {10.1021/acs.jctc.8b00976},
-  abstract = {Koopmans-compliant (KC) functionals have been shown to provide accurate spectral properties through a generalized condition of piecewise linearity of the total energy as a function of the fractional addition/removal of an electron to/from any orbital. We analyze the performance of different KC functionals on a large and standardized set of 100 molecules, the GW100 test set, comparing vertical ionization potentials (taken as opposite of the orbital energies) to those obtained from accurate quantum chemistry methods, and to experimental results. We find excellent agreement, with a mean absolute error of 0.20 eV for the KIPZ functional on the first ionization potential, which is state-of-the-art for both density functional theory (DFT)-based calculations and many-body perturbation theory. We highlight similarities and differences between KC functionals and other electronic-structure approaches, such as dielectric-dependent hybrid functionals and Green's function methods, both from a theoretical and from a pr...},
-  journal = {Journal of Chemical Theory and Computation},
-  number = {3}
+  abstract = {Koopmans-compliant (KC) functionals have been shown to provide accurate spectral properties through a generalized condition of piecewise linearity of the total energy as a function of the fractional addition/removal of an electron to/from any orbital. We analyze the performance of different KC functionals on a large and standardized set of 100 molecules, the GW100 test set, comparing vertical ionization potentials (taken as opposite of the orbital energies) to those obtained from accurate quantum chemistry methods, and to experimental results. We find excellent agreement, with a mean absolute error of 0.20 eV for the KIPZ functional on the first ionization potential, which is state-of-the-art for both density functional theory (DFT)-based calculations and many-body perturbation theory. We highlight similarities and differences between KC functionals and other electronic-structure approaches, such as dielectric-dependent hybrid functionals and Green's function methods, both from a theoretical and from a pr...}
 }
 
 @misc{Dabo2009,
@@ -66,10 +66,10 @@
   author = {Dabo, I. and Cococcioni, M. and Marzari, N.},
   year = {2009},
   month = jan,
-  abstract = {In effective single-electron theories, self-interaction manifests itself through the unphysical dependence of the energy of an electronic state as a function of its occupation, which results in important deviations from the ideal Koopmans trend and strongly affects the accuracy of electronic-structure predictions. Here, we study the non-Koopmans behavior of local and semilocal density-functional theory (DFT) total energy methods as a means to quantify and to correct self-interaction errors. We introduce a non-Koopmans self-interaction correction that generalizes the Perdew-Zunger scheme, and demonstrate its considerably improved performance in correcting the deficiencies of DFT approximations for self-interaction problems of fundamental and practical relevance.},
-  archivePrefix = {arXiv},
   eprint = {0901.2637},
-  eprinttype = {arxiv}
+  eprinttype = {arxiv},
+  abstract = {In effective single-electron theories, self-interaction manifests itself through the unphysical dependence of the energy of an electronic state as a function of its occupation, which results in important deviations from the ideal Koopmans trend and strongly affects the accuracy of electronic-structure predictions. Here, we study the non-Koopmans behavior of local and semilocal density-functional theory (DFT) total energy methods as a means to quantify and to correct self-interaction errors. We introduce a non-Koopmans self-interaction correction that generalizes the Perdew-Zunger scheme, and demonstrate its considerably improved performance in correcting the deficiencies of DFT approximations for self-interaction problems of fundamental and practical relevance.},
+  archiveprefix = {arXiv}
 }
 
 @article{Dabo2010,
@@ -77,13 +77,13 @@
   author = {Dabo, Ismaila and Ferretti, Andrea and Poilvert, Nicolas and Li, Yanli and Marzari, Nicola and Cococcioni, Matteo},
   year = {2010},
   month = sep,
+  journal = {Physical Review B},
   volume = {82},
+  number = {11},
   pages = {115121},
   publisher = {{American Physical Society}},
   issn = {1098-0121},
-  doi = {10.1103/PhysRevB.82.115121},
-  journal = {Physical Review B},
-  number = {11}
+  doi = {10.1103/PhysRevB.82.115121}
 }
 
 @article{Dabo2013,
@@ -91,16 +91,16 @@
   author = {Dabo, Ismaila and Ferretti, Andrea and Park, Cheol Hwan and Poilvert, Nicolas and Li, Yanli and Cococcioni, Matteo and Marzari, Nicola},
   year = {2013},
   month = jan,
+  journal = {Physical Chemistry Chemical Physics},
   volume = {15},
+  number = {2},
+  eprint = {1210.7973},
+  eprinttype = {arxiv},
   pages = {685--695},
   issn = {14639076},
   doi = {10.1039/c2cp43491a},
   abstract = {Accurate and efficient approaches to predict the optical properties of organic semiconducting compounds could accelerate the search for efficient organic photovoltaic materials. Nevertheless, predicting the optical properties of organic semiconductors has been plagued by the inaccuracy or computational cost of conventional first-principles calculations. In this work, we demonstrate that orbital-dependent density-functional theory based upon Koopmans' condition [Phys. Rev. B, 2010, 82, 115121] is apt for describing donor and acceptor levels for a wide variety of organic molecules, clusters, and oligomers within a few tenths of an electron-volt relative to experiment, which is comparable to the predictive performance of many-body perturbation theory methods at a fraction of the computational cost. \textcopyright{} the Owner Societies 2013.},
-  archivePrefix = {arXiv},
-  eprint = {1210.7973},
-  eprinttype = {arxiv},
-  journal = {Physical Chemistry Chemical Physics},
-  number = {2}
+  archiveprefix = {arXiv}
 }
 
 @article{Ferretti2014,
@@ -108,13 +108,27 @@
   author = {Ferretti, Andrea and Dabo, Ismaila and Cococcioni, Matteo and Marzari, Nicola},
   year = {2014},
   month = may,
+  journal = {Physical Review B},
   volume = {89},
+  number = {19},
   pages = {195134},
   publisher = {{American Physical Society}},
   issn = {1098-0121},
-  doi = {10.1103/PhysRevB.89.195134},
-  journal = {Physical Review B},
-  number = {19}
+  doi = {10.1103/PhysRevB.89.195134}
+}
+
+@article{Marzari2012,
+  title = {Maximally Localized {{Wannier}} Functions: {{Theory}} and Applications},
+  author = {Marzari, Nicola and Mostofi, Arash A. and Yates, Jonathan R. and Souza, Ivo and Vanderbilt, David},
+  year = {2012},
+  month = oct,
+  journal = {Reviews of Modern Physics},
+  volume = {84},
+  number = {4},
+  pages = {1419--1475},
+  publisher = {{American Physical Society}},
+  issn = {0034-6861},
+  doi = {10.1103/RevModPhys.84.1419}
 }
 
 @article{Nattino2019,
@@ -122,17 +136,17 @@
   author = {Nattino, Francesco and Dupont, C{\'e}line and Marzari, Nicola and Andreussi, Oliviero},
   year = {2019},
   month = nov,
+  journal = {J. Chem. Theory Comput.},
   volume = {15},
+  number = {11},
+  eprint = {1906.00822},
+  eprinttype = {arxiv},
   pages = {6313--6322},
   publisher = {{American Chemical Society}},
   issn = {15499626},
   doi = {10.1021/acs.jctc.9b00552},
   abstract = {Standard flavors of density-functional theory (DFT) calculations are known to fail in describing anions, due to large self-interaction errors. The problem may be circumvented using localized basis sets of reduced size, leaving no variational flexibility for the extra electron to delocalize. Alternatively, a recent approach exploiting DFT evaluations of total energies on electronic densities optimized at the Hartree-Fock (HF) level has been reported, showing that the self-interaction-free HF densities are able to lead to an improved description of the additional electron, returning affinities in close agreement with the experiments. Nonetheless, such an approach can fail when the HF densities are too inaccurate. Here, an alternative approach is presented, in which an embedding environment is used to stabilize the anion in a bound configuration. Similar to the HF case, when computing total energies at the DFT level on these corrected densities, electron affinities in very good agreement with experiments can be recovered. The effect of the environment can be evaluated and removed by an extrapolation of the results to the limit of vanishing embedding. Apart from the definition of the domain of the embedding potential, the approach is free from parameters and it can be easily applied to DFT calculations with delocalized basis sets, e.g., plane waves, for which alternative approaches are either not viable or more computationally demanding. The proposed extrapolation strategy can be thus applied also to extended systems, as often studied in condensed-matter physics and materials science, and we illustrate how the embedding environment can be exploited to determine the energy of an adsorbing anion, here a chloride ion on a metal surface, whose charge configuration would be incorrectly predicted by standard density functionals.},
-  archivePrefix = {arXiv},
-  eprint = {1906.00822},
-  eprinttype = {arxiv},
-  journal = {J. Chem. Theory Comput.},
-  number = {11},
+  archiveprefix = {arXiv},
   pmid = {31580667}
 }
 
@@ -141,14 +155,14 @@
   author = {Nguyen, Ngoc Linh and Borghi, Giovanni and Ferretti, Andrea and Marzari, Nicola},
   year = {2016},
   month = aug,
+  journal = {Journal of Chemical Theory and Computation},
   volume = {12},
+  number = {8},
   pages = {3948--3958},
   publisher = {{American Chemical Society}},
   issn = {15499626},
   doi = {10.1021/acs.jctc.6b00145},
-  abstract = {The need to interpret ultraviolet photoemission data strongly motivates the refinement of first-principles techniques that are able to accurately predict spectral properties. In this work, we employ Koopmans-compliant functionals, constructed to enforce piecewise linearity in approximate density functionals, to calculate the structural and electronic properties of DNA and RNA nucleobases. Our results show that not only ionization potentials and electron affinities are accurately predicted with mean absolute errors of {$<$}0.1 eV, but also that calculated photoemission spectra are in excellent agreement with experimental ultraviolet photoemission spectra. In particular, the role and contribution of different tautomers to the photoemission spectra are highlighted and discussed in detail. The structural properties of nucleobases are also investigated, showing an improved description with respect to local and semilocal density-functional theory. Methodologically, our results further consolidate the role of Koopmans-compliant functionals in providing, through orbital-density-dependent potentials, accurate electronic and spectral properties.},
-  journal = {Journal of Chemical Theory and Computation},
-  number = {8}
+  abstract = {The need to interpret ultraviolet photoemission data strongly motivates the refinement of first-principles techniques that are able to accurately predict spectral properties. In this work, we employ Koopmans-compliant functionals, constructed to enforce piecewise linearity in approximate density functionals, to calculate the structural and electronic properties of DNA and RNA nucleobases. Our results show that not only ionization potentials and electron affinities are accurately predicted with mean absolute errors of {$<$}0.1 eV, but also that calculated photoemission spectra are in excellent agreement with experimental ultraviolet photoemission spectra. In particular, the role and contribution of different tautomers to the photoemission spectra are highlighted and discussed in detail. The structural properties of nucleobases are also investigated, showing an improved description with respect to local and semilocal density-functional theory. Methodologically, our results further consolidate the role of Koopmans-compliant functionals in providing, through orbital-density-dependent potentials, accurate electronic and spectral properties.}
 }
 
 @article{Nguyen2018,
@@ -156,13 +170,13 @@
   author = {Nguyen, Ngoc Linh and Colonna, Nicola and Ferretti, Andrea and Marzari, Nicola},
   year = {2018},
   month = may,
+  journal = {Physical Review X},
   volume = {8},
+  number = {2},
   pages = {021051},
   publisher = {{American Physical Society}},
   issn = {2160-3308},
-  doi = {10.1103/PhysRevX.8.021051},
-  journal = {Physical Review X},
-  number = {2}
+  doi = {10.1103/PhysRevX.8.021051}
 }
 
 @article{Pederson1984,
@@ -170,15 +184,15 @@
   author = {Pederson, Mark R. and Heaton, Richard A. and Lin, Chun C.},
   year = {1984},
   month = mar,
+  journal = {The Journal of Chemical Physics},
   volume = {80},
+  number = {5},
   pages = {1972--1975},
   publisher = {{American Institute of Physics}},
   issn = {0021-9606},
   doi = {10.1063/1.446959},
   abstract = {A scheme for incorporating the self-interaction correction (SIC) to the local density approximation of the Hartree\textendash Fock theory of electronic structure of molecules is presented. This method is applied to the N2 molecule and the resulting orbital energies and total energy are in good agreement with the Hartree\textendash Fock values.},
-  journal = {The Journal of Chemical Physics},
-  keywords = {ELECTRONIC STRUCTURE,HARTREE−FOCK METHOD,MOLECULES,NITROGEN},
-  number = {5}
+  keywords = {ELECTRONIC STRUCTURE,HARTREE−FOCK METHOD,MOLECULES,NITROGEN}
 }
 
 
