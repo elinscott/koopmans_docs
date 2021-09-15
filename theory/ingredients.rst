@@ -210,3 +210,16 @@ and with :math:`E_{\rm Hxc}` denoting the Hartree and exchange-correlation energ
 As mentioned, the orbital-dependent screening coefficients :math:`\alpha_{i}` account for electronic screening and orbitals relaxation;
 if these were all set to be equal to one, the KC functionals would fulfill the Koopmans' condition at frozen orbitals, rather than at 
 relaxed orbitals.
+
+Once the screening coefficients are defined, from a computational point of view a complete KIPZ calculation requires the energy minimization 
+of the orbital-density dependent functionals. The KI energy correction is instead identically zero at integer occupation numbers (i.e. for 
+insulating systems), meaning that it preserves the ground state density and enegy of the underlying density functional and its unitary 
+invariance under rotation of the occupied and emoty electronic manifolds. To uniquely define the minimizing orbitals we add an infinitesimally 
+small PZ-SIC contribution to the KI energy. This allow us to 1) unanbigously defined the manifolds, since the small PZ-SIC term breaks the 
+unitary invariance, and 2) localize the orbitals without changing the ground-state energy. Overall this ammount to defining KI as the limit
+of the KIPZ functional when the PZ-SIC correction is vanishingly small~:cite:`Borghi2014`. The only additional cost beside the underlying DFT 
+calculation is therefor the one needed to define the unitary transformation rotation connecting the DFT canonical states to the PZ-SIC ones.
+To retain the computational cost of the KI calculation and the superior accuracy of the KIPZ functional, a perturbative KIPZ (pKIPZ) calculation 
+can be defined where the KIPZ hamiltonian is computed on top of the KI minimizing orbitals and screening coefficients, 
+thus neglecting self-consistency effects at the KIPZ level. This typically shows performance in between the KI and KIPZ functionals at a 
+computational cost of the KI calculation :cite:`Colonna2019`. 
