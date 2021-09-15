@@ -88,7 +88,7 @@ DFPT
 ^^^^
 In this approach the energy is approximated as a quadratic function of the occupation number and the expression for the screening coefficients reduces to
 
-.. math::  \alpha_i = \frac{d^2E_{DFT}/df_i^2}{\partial^2 E_{DFT}/\partial f_i^2} = \frac{\langle n_i | \epsilon^{-1} f_{\rm Hxc} | n_i \rangle}{\langle n_i | f_{\rm Hxc} | n_i \rangle} 
+.. math::  \alpha_i = \frac{d^2E_{\rm DFT}/df_i^2}{\partial^2 E_{\rm DFT}/\partial f_i^2} = \frac{\langle n_i | \epsilon^{-1} f_{\rm Hxc} | n_i \rangle}{\langle n_i | f_{\rm Hxc} | n_i \rangle} 
 
 where :math:`\frac{d}{df_i}` and :math:`\frac{\partial}{\partial f_i}` represent variations done accounting for the orbitals relaxation or not, respectively. 
 :math:`\epsilon(\mathbf{r},\mathbf{r}')` is the microscopic dielectric function of the material, 
@@ -135,19 +135,19 @@ the number of :math:`\mathbf{q}`-points in the PC) increases, the PC-DFPT approa
 
 The flavour: KI, pKIPZ, or KIPZ
 -------------------------------
-As we have seen KC functionals are constructed starting from the exact or an approximate DFT energy functional :math:`E^{\rm DFT}` 
+As we have seen Koopmans functionals are constructed starting from the exact or an approximate DFT energy functional :math:`E^{\rm DFT}` 
 (the "base" functional) and replacing, orbital-by-orbital, the contribution to the total DFT energy that is not linear in the fractional
 orbital occupation with one that is linear:
 
 .. math:: 
 
-    & E^{\rm KC} =  E^{\rm DFT} + \sum_{i} \alpha_i \Pi^{\rm KC}_i\;, \label{kc_gen} \\
-    & \Pi_i^{\rm KC} = -\int_0^{f_i} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds + f_i \eta_i\;. \label{kc_gen1}
+    & E^{\rm Koopmans} =  E^{\rm DFT} + \sum_{i} \alpha_i \Pi^{\rm Koopmans}_i\;, \label{kc_gen} \\
+    & \Pi_i^{\rm Koopmans} = -\int_0^{f_i} \langle \varphi_i | \hat{H}^{\rm DFT}(s) | \varphi_i \rangle ds + f_i \eta_i\;. \label{kc_gen1}
 
 Here, :math:`\hat{H}^{\rm DFT}(s)` is the KS Hamiltonian of the underlying density functional (exact or approximated) calculated with a fractional 
 occupation :math:`s` in orbital :math:`\varphi_i`, and :math:`\alpha_i` are screening coefficients introduced to ensure the linearity is 
 preserved when taking into account the response and relaxation of all other orbitals :math:`\{\varphi_{j\neq i}\}`. 
-The slope :math:`\eta_i` in the linear Koopmans' term can be chosen in a number of ways, leading to different KC flavors. 
+The slope :math:`\eta_i` in the linear Koopmans' term can be chosen in a number of ways, leading to different Koopmans flavors. 
 In KI the slope :math:`\eta_i` is chosen as the total energy difference of two adjacent electronic configurations with integer occupations:
 
 .. math::
@@ -208,18 +208,18 @@ for the unscreened KI and KIPZ corrections :cite:`Borghi2014`:
 having defined :math:`\rho_i(\mathbf{r}) = f_i\:|\varphi_i(\mathbf{r})|^2` and :math:`n_i(\mathbf{r}) = |\varphi_i(\mathbf{r})|^2`, 
 and with :math:`E_{\rm Hxc}` denoting the Hartree and exchange-correlation energy corresponding to the underlying base functional.
 As mentioned, the orbital-dependent screening coefficients :math:`\alpha_{i}` account for electronic screening and orbitals relaxation;
-if these were all set to be equal to one, the KC functionals would fulfill the Koopmans' condition at frozen orbitals, rather than at 
+if these were all set to be equal to one, the Koopmans functionals would fulfill the Koopmans' condition at frozen orbitals, rather than at 
 relaxed orbitals.
 
 Once the screening coefficients are defined, from a computational point of view a complete KIPZ calculation requires the energy minimization 
 of the orbital-density dependent functionals. The KI energy correction is instead identically zero at integer occupation numbers (i.e. for 
 insulating systems), meaning that it preserves the ground state density and enegy of the underlying density functional and its unitary 
-invariance under rotation of the occupied and emoty electronic manifolds. To uniquely define the minimizing orbitals we add an infinitesimally 
+invariance under rotation of the occupied and empty electronic manifolds. To uniquely define the minimizing orbitals we add an infinitesimally 
 small PZ-SIC contribution to the KI energy. This allow us to 1) unanbigously defined the manifolds, since the small PZ-SIC term breaks the 
 unitary invariance, and 2) localize the orbitals without changing the ground-state energy. Overall this ammount to defining KI as the limit
-of the KIPZ functional when the PZ-SIC correction is vanishingly small~:cite:`Borghi2014`. The only additional cost beside the underlying DFT 
-calculation is therefor the one needed to define the unitary transformation rotation connecting the DFT canonical states to the PZ-SIC ones.
+of the KIPZ functional when the PZ-SIC correction is vanishingly small :cite:`Borghi2014`. The only additional cost beside the underlying DFT 
+calculation is therefor the one needed to define the unitary transformation connecting the DFT canonical states to the PZ-SIC ones at fixed manifold.
 To retain the computational cost of the KI calculation and the superior accuracy of the KIPZ functional, a perturbative KIPZ (pKIPZ) calculation 
-can be defined where the KIPZ hamiltonian is computed on top of the KI minimizing orbitals and screening coefficients, 
+can be defined where the KIPZ hamiltonian is computed on top of the KI variational orbitals and screening coefficients, 
 thus neglecting self-consistency effects at the KIPZ level. This typically shows performance in between the KI and KIPZ functionals at a 
-computational cost of the KI calculation :cite:`Colonna2019`. 
+computational cost almost identical to that of a KI calculation :cite:`Colonna2019`. 
