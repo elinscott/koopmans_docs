@@ -11,6 +11,6 @@ bs = results['band structure']
 bs.plot(filename='ki_bandstructure.png')
 
 # Extract the band gap
-n_occ = wf.master_calc_params['w90_occ'].num_wann
+n_occ = wf.projections.num_wann(occ=True)
 gap = bs.energies[:, :, n_occ:].min() - bs.energies[:, :, :n_occ].max()
 print(f'KI band gap = {gap:.2f} eV')

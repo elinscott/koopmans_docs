@@ -9,8 +9,7 @@
 
  Written by Edward Linscott, Riccardo De Gennaro, and Nicola Colonna
 
- using QE version qe-6.7MaX-Release-19-gfd10090a8, workflow manager version v0.2-6-gc7225ed, and ASE version a1c04417c
-
+ using QE version qe-6.7MaX-Release-31-g57aa172e9, workflow manager version v0.4-6-g452fb267, and ASE version 5dfcc3659
 
   Initialisation of density and variational orbitals
   ==================================================
@@ -43,8 +42,6 @@
 
   Orbital 32
   ----------
-   Running calc_alpha/orbital_32/ki_frozen... done
-   Running calc_alpha/orbital_32/dft_frozen... done
    Running calc_alpha/orbital_32/dft_n-1... done
 
   Orbital 33
@@ -52,25 +49,23 @@
    Running calc_alpha/orbital_33/pz_print... done
    Running calc_alpha/orbital_33/dft_n+1_dummy... done
    Running calc_alpha/orbital_33/dft_n+1... done
-   Running calc_alpha/orbital_33/dft_n+1-1_frozen... done
-   Running calc_alpha/orbital_33/ki_n+1-1_frozen... done
 
   Orbitals 34-64
   --------------
    Skipping; will use the screening parameter of an equivalent orbital
-
-alpha
-         1         2         3   ...        62        63        64
-0  0.077000  0.077000  0.077000  ...  0.077000  0.077000  0.077000
-1  0.132586  0.132586  0.132586  ...  0.040333  0.040333  0.040333
-
-[2 rows x 64 columns]
-
-ΔE_i - ε_i (eV)
-         1         2         3   ...        62        63        64
-0 -0.309305 -0.309305 -0.309305  ... -0.114054 -0.114054 -0.114054
-
-[1 rows x 64 columns]
+   
+   alpha
+            1         2         3   ...        62        63        64
+   0  0.077000  0.077000  0.077000  ...  0.077000  0.077000  0.077000
+   1  0.132741  0.132741  0.132741  ...  0.040357  0.040357  0.040357
+   
+   [2 rows x 64 columns]
+   
+   Delta E_i - epsilon_i (eV)
+            1         2         3         4   ...       61       62       63       64
+   0 -0.310253 -0.310253 -0.310253 -0.310253  ... -0.11398 -0.11398 -0.11398 -0.11398
+   
+   [1 rows x 64 columns]
 
    Screening parameters have been determined but are not necessarily converged
 
