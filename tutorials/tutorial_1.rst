@@ -89,22 +89,9 @@ The second step in the calculation involves the calculation of the screening par
   :lines: 22-40
   :lineno-start: 22
 
-etc. Here, we are calculating the screening parameters using the :ref:`ΔSCF method <theory_dscf>`. For filled orbitals (orbitals 1-9 of ozone) this requires three calculations
-
-.. collapse:: Click here for detailed descriptions of each calculation
-
-  ki_frozen
-    a KI calculation where the density and variational orbitals are fixed. This yields :math:`\lambda_{ii}^\alpha(1)`  
+etc. Here, we are calculating the screening parameters using the :ref:`ΔSCF method <theory_dscf>`. For filled orbitals (orbitals 1-9 of ozone) this requires an :math:`N-1`-electron PBE calculation where we freeze the i\ :sup:`th` orbital, empty it, and allow the rest of the density to relax. This yields :math:`E_i(N-1)`.
   
-  dft_frozen
-    a KI calculation where the density and variational orbitals are fixed. This yields :math:`\lambda_{ii}^0(1)`
-  
-  dft_n-1
-    a :math:`N-1`-electron PBE calculation where we freeze the i\ :sup:`th` orbital, empty it, and allow the rest of the density to relax. This yields :math:`E_i(N-1)`
-  
-  Together with :math:`E(N)` (a result that is given by ``calc_alpha/ki``) and the value of our guess for the screening parameters (:math:`\alpha^0_i = 0.6`), this is sufficient to update our guess for :math:`\alpha_i` (see the :ref:`theory section <theory_dscf>` for details).
-
-|
+Meanwhile, :math:`E(N)`, :math:`\varepsilon_{i}^\alpha(1)`, and :math:`\varepsilon_{i}^0(1)` are all obtained during the trial KI calculation ``calc_alpha/ki``. Together with the value of our guess for the screening parameters (:math:`\alpha^0_i = 0.6`), this is sufficient to update our guess for :math:`\alpha_i` (see the :ref:`theory section <theory_dscf>` for details).
 
 The procedure for empty orbitals is slightly different, as we can see when it comes to orbital 10:
 
@@ -113,23 +100,15 @@ The procedure for empty orbitals is slightly different, as we can see when it co
   :lines: 81-87
   :lineno-start: 81
 
-where now we have a slightly different set of calculations
+where now we must call Quantum ESPRESSO several times in order to obtain :math:`E_i(N+1)`.
 
 .. collapse:: Click here for detailed descriptions of each calculation
 
   pz_print and dft_n+1_dummy
-    preliminary calculations that generate files required by the subsequent calculations
+    preliminary calculations that generate files required by the subsequent constrained DFT calculation
   
   dft_n+1
     a :math:`N+1`-electron PBE calculation where we freeze the 10\ :sup:`th` orbital, fill it, and allow the rest of the density to relax. This yields :math:`E_i(N+1)`
-  
-  dft_n+1-1_frozen
-    a :math:`N`-electron PBE calculation where the density and variational orbitals are frozen. This yields :math:`\lambda_{ii}^0(0)`
-  
-  ki_n+1-1_frozen
-    a :math:`N`-electron KI calculation where the density and variational orbitals are frozen. This yields  :math:`\lambda_{ii}^\alpha(0)`
-
-|
 
 At the end of this section we can see a couple of tables:
 
@@ -140,7 +119,7 @@ At the end of this section we can see a couple of tables:
 
 The first table lists the screening parameters :math:`\alpha_i` that we obtained -- we can see from row 0 we started with a guess of :math:`\alpha_i = 0.6` for every orbital `i`, and row 1 shows the alpha values.
 
-The second table lists :math:`\Delta E_i - \lambda_{ii}^\alpha`. This is a measure of how well converged the alpha values are: if this value is close to zero, then the alpha values are well-converged. Note that the values listed above correspond to our starting guess of :math:`\alpha_i = 0.6`; this table does not show how well-converged the final alpha values are.
+The second table lists :math:`\Delta E_i - \varepsilon_{i}^\alpha`. This is a measure of how well converged the alpha values are: if this value is close to zero, then the alpha values are well-converged. Note that the values listed above correspond to our starting guess of :math:`\alpha_i = 0.6`; this table does not show how well-converged the final alpha values are.
 
 .. note::
   In order to see how well-converged our new screening parameters are, try increasing ``n_max_sc_steps`` in the input file from ``1`` to ``2``. Can you make sense of the contents of the resulting tables?

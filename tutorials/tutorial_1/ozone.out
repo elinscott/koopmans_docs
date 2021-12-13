@@ -9,8 +9,7 @@
 
  Written by Edward Linscott, Riccardo De Gennaro, and Nicola Colonna
 
- using QE version qe-6.7MaX-Release-19-gfd10090a8, workflow manager version 78780915, and ASE version 95ac7493e
-
+ using QE version qe-6.7MaX-Release-31-g57aa172e9, workflow manager version v0.4-6-g452fb267, and ASE version 5dfcc3659
 
   Initialisation of density and variational orbitals
   ==================================================
@@ -26,56 +25,38 @@
 
   Orbital 1
   ---------
-   Running calc_alpha/orbital_1/ki_frozen... done
-   Running calc_alpha/orbital_1/dft_frozen... done
    Running calc_alpha/orbital_1/dft_n-1... done
 
   Orbital 2
   ---------
-   Running calc_alpha/orbital_2/ki_frozen... done
-   Running calc_alpha/orbital_2/dft_frozen... done
    Running calc_alpha/orbital_2/dft_n-1... done
 
   Orbital 3
   ---------
-   Running calc_alpha/orbital_3/ki_frozen... done
-   Running calc_alpha/orbital_3/dft_frozen... done
    Running calc_alpha/orbital_3/dft_n-1... done
 
   Orbital 4
   ---------
-   Running calc_alpha/orbital_4/ki_frozen... done
-   Running calc_alpha/orbital_4/dft_frozen... done
    Running calc_alpha/orbital_4/dft_n-1... done
 
   Orbital 5
   ---------
-   Running calc_alpha/orbital_5/ki_frozen... done
-   Running calc_alpha/orbital_5/dft_frozen... done
    Running calc_alpha/orbital_5/dft_n-1... done
 
   Orbital 6
   ---------
-   Running calc_alpha/orbital_6/ki_frozen... done
-   Running calc_alpha/orbital_6/dft_frozen... done
    Running calc_alpha/orbital_6/dft_n-1... done
 
   Orbital 7
   ---------
-   Running calc_alpha/orbital_7/ki_frozen... done
-   Running calc_alpha/orbital_7/dft_frozen... done
    Running calc_alpha/orbital_7/dft_n-1... done
 
   Orbital 8
   ---------
-   Running calc_alpha/orbital_8/ki_frozen... done
-   Running calc_alpha/orbital_8/dft_frozen... done
    Running calc_alpha/orbital_8/dft_n-1... done
 
   Orbital 9
   ---------
-   Running calc_alpha/orbital_9/ki_frozen... done
-   Running calc_alpha/orbital_9/dft_frozen... done
    Running calc_alpha/orbital_9/dft_n-1... done
 
   Orbital 10
@@ -83,22 +64,21 @@
    Running calc_alpha/orbital_10/pz_print... done
    Running calc_alpha/orbital_10/dft_n+1_dummy... done
    Running calc_alpha/orbital_10/dft_n+1... done
-   Running calc_alpha/orbital_10/dft_n+1-1_frozen... done
-   Running calc_alpha/orbital_10/ki_n+1-1_frozen... done
-UserWarning: KI and DFT energies differ by 0.00004 eV
+   
+   alpha
+           1         2         3         4   ...        7         8         9        10
+   0  0.60000  0.600000  0.600000  0.600000  ...  0.600000  0.600000  0.600000  0.60000
+   1  0.65568  0.727565  0.783855  0.663858  ...  0.729884  0.741895  0.779259  0.71739
+   
+   [2 rows x 10 columns]
+   
+   Delta E_i - epsilon_i (eV)
+            1         2         3   ...        8        9         10
+   0 -0.477272 -0.920449 -1.124074  ... -0.888568 -1.05013  0.711214
+   
+   [1 rows x 10 columns]
 
-alpha
-        1         2         3   ...        8         9         10
-0  0.60000  0.600000  0.600000  ...  0.600000  0.600000  0.600000
-1  0.65568  0.727565  0.783855  ...  0.741895  0.779259  0.717399
-
-[2 rows x 10 columns]
-
-delta E - lambda^alpha_ii (eV)
-         1         2         3   ...        8        9         10
-0 -0.477272 -0.920449 -1.124074  ... -0.888568 -1.05013  0.711252
-
-[1 rows x 10 columns]
+   Screening parameters have been determined but are not necessarily converged
 
   Final KI calculation
   ====================
