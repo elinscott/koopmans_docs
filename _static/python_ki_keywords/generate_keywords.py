@@ -31,7 +31,7 @@ def print_settings_as_html(settings, table_id, fd):
 
         fd.write(f'\n   <tr>')
         fd.write(f'\n      <td><code>{s.name}</code></td>')
-        fd.write(f'\n      <td>{s.description}</td>')
+        fd.write(f'\n      <td>{s.description.replace("<","&lt;").replace(">","&gt;")}</td>')
         fd.write(f'\n      <td>{stype}</td>')
         fd.write(f'\n      <td>{default}</td>')
         fd.write(f'\n   </tr>')
