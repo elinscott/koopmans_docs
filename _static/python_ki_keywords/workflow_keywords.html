@@ -9,13 +9,13 @@
       <td><code>task</code></td>
       <td>Task to perform</td>
       <td><code>str</code></td>
-      <td><code>singlepoint</code> (must be <code>singlepoint</code>/<code>convergence</code>/<code>environ_dscf</code>/<code>ui</code>)</td>
+      <td><code>singlepoint</code> (must be <code>singlepoint</code>/<code>convergence</code>/<code>wannierise</code>/<code>environ_dscf</code>/<code>ui</code>/<code>dft_bands</code>)</td>
    </tr>
    <tr>
       <td><code>functional</code></td>
       <td>orbital-density-dependent-functional/density-functional to use</td>
       <td><code>str</code></td>
-      <td><code>ki</code> (must be <code>ki</code>/<code>kipz</code>/<code>pkipz</code>/<code>pbe</code>/<code>all</code>)</td>
+      <td><code>ki</code> (must be <code>ki</code>/<code>kipz</code>/<code>pkipz</code>/<code>dft</code>/<code>all</code>)</td>
    </tr>
    <tr>
       <td><code>calculate_alpha</code></td>
@@ -91,7 +91,7 @@
    </tr>
    <tr>
       <td><code>alpha_conv_thr</code></td>
-      <td>convergence threshold for |delta E - lambda|; if below this threshold, the corresponding alpha value is not updated</td>
+      <td>convergence threshold for |Delta E_i - epsilon_i|; if below this threshold, the corresponding alpha value is not updated</td>
       <td><code>float</code>/<code>str</code></td>
       <td><code>0.001</code></td>
    </tr>
@@ -126,10 +126,22 @@
       <td></td>
    </tr>
    <tr>
+      <td><code>orbital_groups_self_hartree_tol</code></td>
+      <td>when calculating alpha parameters, the code will group orbitals together only if their self-Hartree energy is within this threshold</td>
+      <td><code>float</code></td>
+      <td></td>
+   </tr>
+   <tr>
       <td><code>enforce_spin_symmetry</code></td>
       <td>if True, the spin-up and spin-down wavefunctions will be forced to be the same</td>
       <td><code>bool</code></td>
       <td><code>True</code></td>
+   </tr>
+   <tr>
+      <td><code>check_wannierisation</code></td>
+      <td>if True, checks the Im/Re ratio and generates a plot of the interpolated band structure</td>
+      <td><code>bool</code></td>
+      <td><code>False</code></td>
    </tr>
    <tr>
       <td><code>convergence_observable</code></td>

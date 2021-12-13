@@ -3,7 +3,7 @@
     {
         "functional"               : "dft",
         "task"                     : "convergence",
-        "from_scratch"             : true,
+        "from_scratch"             : false,
         "convergence_observable"   : "homo energy",
         "convergence_threshold"    : "0.01 eV",
         "convergence_parameters"   : ["ecutwfc", "cell_size"],

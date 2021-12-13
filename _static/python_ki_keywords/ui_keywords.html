@@ -8,26 +8,20 @@
    <tr>
       <td><code>kc_ham_file</code></td>
       <td>the name of the Hamiltonian file to read in</td>
-      <td><code>str</code></td>
+      <td><code>Path</code></td>
       <td></td>
    </tr>
    <tr>
       <td><code>w90_seedname</code></td>
       <td>w90_seedname must be equal to the seedname used in the previous Wannier90 calculation. The code will look for a file called w90_seedname.wout</td>
-      <td><code>str</code></td>
+      <td><code>Path</code></td>
       <td></td>
    </tr>
    <tr>
-      <td><code>alat_sc</code></td>
-      <td>the lattice parameter (in Bohr) of the supercell, as celldm(1) in QE. NB: it is important to put the supercell (and not the primitive cell) lattice parameter, otherwise the result will be wrong</td>
-      <td><code>float</code>/<code>int</code></td>
-      <td></td>
-   </tr>
-   <tr>
-      <td><code>sc_dim</code></td>
+      <td><code>kpts</code></td>
       <td>units of repetition of the primitive cell withing the supercell along the three lattice directions. Equivalently this has to match the Monkhorst-Pack mesh of k-points.</td>
       <td><code>list</code></td>
-      <td><code>[1, 1, 1]</code></td>
+      <td></td>
    </tr>
    <tr>
       <td><code>w90_calc</code></td>
@@ -57,19 +51,19 @@
    <tr>
       <td><code>smooth_int_factor</code></td>
       <td>if this is > 1 (or is a 3-element list with at least one entry > 1), the smooth interpolation method is used. This consists of removing the DFT part of the Hamiltonian from the full Koopmans Hamiltonian and adding the DFT Hamiltonian from a calculation with a denser k-points mesh, where this keyword defines how many times denser to make the mesh. (If this is set to a scalar a, the new k-grid will be [a*kx_old, a*ky_old, a*kz_old]. If it is a list [a, b, c], the dense k-grid will be [a*kx_old, b*ky_old, c*kz_old].) This works only for a non self-consistent Koopmans calculation using Wannier since, to be consistent, all the Hamiltonians must be in the same gauge, i.e. the Wannier gauge</td>
-      <td><code>int</code>/<code>list</code></td>
+      <td><code>int</code>/<code>list</code>/<code>ndarray</code></td>
       <td><code>1</code></td>
    </tr>
    <tr>
       <td><code>dft_ham_file</code></td>
       <td></td>
-      <td><code>str</code></td>
+      <td><code>Path</code></td>
       <td></td>
    </tr>
    <tr>
       <td><code>dft_smooth_ham_file</code></td>
       <td></td>
-      <td><code>str</code></td>
+      <td><code>Path</code></td>
       <td></td>
    </tr>
    <tr>
