@@ -21,15 +21,15 @@ if __name__ == '__main__':
     workflow.run()
 
     # Load results into a pandas dataframe
-    epsilons = sorted(list(set([c.environ_settings['ENVIRON']['env_static_permittivity'] for c in workflow.all_calcs])))
-    results = set([k for c in workflow.all_calcs for k in c.results.keys()])
+    epsilons = sorted(list(set([c.environ_settings['ENVIRON']['env_static_permittivity'] for c in workflow.calculations])))
+    results = set([k for c in workflow.calculations for k in c.results.keys()])
     
     columns = [f'{label} {result}' for label in ['charged', 'neutral'] for result in results]
     columns.append('EA')
     df = pd.DataFrame(index=epsilons, columns=columns)
-    for calc in workflow.all_calcs:
+    for calc in workflow.calculations:
         epsilon = float(calc.environ_settings['ENVIRON']['env_static_permittivity'])
-        if calc.tot_charge == 0:
+        if calc.parameters.tot_charge == 0:
             label = 'neutral'
         else:
             label = 'charged'

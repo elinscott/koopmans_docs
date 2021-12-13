@@ -22,11 +22,6 @@
     "atomic_species": {
       "species": [
         [ "O", 1.0, "O_ONCV_PBE-1.0.upf" ]]
-    },
-    "k_points": {
-      "kind": "automatic",
-      "kpts": [1, 1, 1],
-      "koffset": [0, 0, 0]
     }
   },
   "pw": {

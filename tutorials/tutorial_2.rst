@@ -69,8 +69,8 @@ Let's now inspect this tutorial's :download:`input file <tutorial_2/si.json>`. A
 which tells the code to perform a standalone Wannierisation calculation. Meanwhile, at the bottom of the file there are some Wannier90-specific parameters provided in the ``w90`` block
 
 .. literalinclude:: tutorial_2/si.json
-  :lines: 84-103
-  :lineno-start: 84
+  :lines: 82-99
+  :lineno-start: 82
 
 Here, the keywords provided in the ``emp`` subdictionary are only applied during the Wannierisation of the empty manifold. The ``w90`` block format is explained more fully :ref:`here <The w90 block>`.
 
@@ -144,7 +144,10 @@ Clearly, we can see that the interpolation is no good! (The interpolated band st
 
   .. literalinclude:: tutorial_2/wannierise.py
 
-TODO: add discussion of real/imaginary ratio of WFs
+.. tip::
+  You may also notice a file called ``interpolated_bandstructure_2x2x2.fig.pkl``. This is a version of the figure that you can load in python and modify as you see fit. e.g. here is a script that changes the y-axis limits and label:
+
+  .. literalinclude:: tutorial_2/load_pickled_figure.py
 
 The KI calculation
 ------------------
@@ -160,8 +163,8 @@ Initialisation
 If you run this new input the output will be remarkably similar to that from the previous tutorial, with a couple of exceptions. At the start of the workflow you will see there is a Wannierisation procedure, much like we had earlier when we running with the ``wannierise`` task:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 15-28
-  :lineno-start: 15
+  :lines: 16-27
+  :lineno-start: 16
   :language: text
 
 which replaces the previous series of semi-local and PZ calculations that we used to initialise the variational orbitals for a molecule.
@@ -169,8 +172,8 @@ which replaces the previous series of semi-local and PZ calculations that we use
 There is then an new "folding to supercell" subsection:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 29-32
-  :lineno-start: 29
+  :lines: 28-31
+  :lineno-start: 28
   :language: text
 
 In order to understand what these calculations are doing, we must think ahead to the next step in our calculation, where we will calculate the screening parameters using the ΔSCF method. These calculations, where we remove/add an electron from/to the system, require us to work in a supercell. This means that we must transform the :math:`k`-dependent primitive cell results from previous calculations into equivalent :math:`\Gamma`-only supercell quantities that can be read by ``kcp``. This is precisely what the above ``wan2odd`` calculations do.
@@ -180,8 +183,8 @@ Calculating the screening parameters
 Having transformed into a supercell, the calculation of the screening parameters proceeds as usual. The one difference to tutorial 1 that you might notice at this step is that we are skipping the calculation of screening parameters for some of the orbitals:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 36-46
-  :lineno-start: 36
+  :lines: 35-45
+  :lineno-start: 35
   :emphasize-lines: 7
   :language: text
 
@@ -199,18 +202,18 @@ The final calculation and postprocessing
 The final difference for the solids calculation is that there is an additional preprocessing step at the very end:
 
 .. literalinclude:: tutorial_2/si_ki.out
-  :lines: 82-
-  :lineno-start: 82
+  :lines: 72-
+  :lineno-start: 72
   :language: text
 
 Here, we transform back our results from the supercell sampled at :math:`\Gamma` to the primitive cell with :math:`k`-space sampling. This allows us to obtain a bandstructure. The extra Wannierisation step that is being performed is to assist the interpolation of the band structure in the primitive cell, and has been performed because in the input file we specified
 
 .. literalinclude:: tutorial_2/si.json
-  :lines: 104-106
-  :lineno-start: 104
+  :lines: 100-102
+  :lineno-start: 100
   :emphasize-lines: 2
 
-For more details on the "unfold and interpolate" procedure see :ref:`here <The ui block>`.
+For more details on the "unfold and interpolate" procedure see :ref:`here <The ui block>` and Ref. :cite:`DeGennaro2021`.
 
 Extracting the KI bandstructure and the bandgap of Si
 -----------------------------------------------------

@@ -4,7 +4,7 @@ from koopmans import io
 wf = io.read('ozone.kwf')
 
 # Access the results from the very last calculation
-results = wf.all_calcs[-1].results
+results = wf.calculations[-1].results
 
 # Calculate the IP and EA
 ip = -results['homo_energy']

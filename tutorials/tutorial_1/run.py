@@ -1,4 +1,4 @@
-from koopmans import io
+from koopmans.io import read
 
-wf = io.read_json(f'ozone.json')
+wf = read('ozone.json')
 wf.run()
