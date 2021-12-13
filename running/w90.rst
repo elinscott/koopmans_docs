@@ -7,3 +7,20 @@ This block contains keywords specific to ``wannier90.x``, which are documented `
 
 In this case both the occupied and empty manifolds will use ``sp3`` projections, but only the empty manifold will use the provided ``dis_froz_max`` etc.
 
+The contents of the projections blocks can be specified in one of two ways. The first option, as demonstrated above, involves providing a list of dictionaries, where each dictionary corresponds to a single projector. The required entries for this dictionary are
+
+  ``site``/``csite``/``fsite``
+    an atom label/cartesian coordinate/fractional coordinate to be used as the projections' centre. The three are mutually exclusive.
+
+  ``ang_mtm``
+    a string specifying the angular momentum states e.g. ``"l=2"``  
+
+The user can also optionally specify ``zaxis``, ``xaxis``, ``radial``, ``zona`` (see the Wannier90 User Guide for details).
+
+Alternatively, the user can simply specify each projection as a single string using Wannier90 syntax e.g.
+
+.. code:: json
+  
+  "projections": [
+    "f=0.25,0.25,0.25:sp3"
+  ]
