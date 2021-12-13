@@ -1,6 +1,6 @@
 {
     "workflow": {
-        "task": "singlepoint",
+        "task": "wannierise",
         "functional": "ki",
         "periodic": true,
         "method": "dscf",

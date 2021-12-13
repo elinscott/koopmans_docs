@@ -67,8 +67,8 @@ The first step in any Koopmans calculation is the initialisation step. In this s
 
 .. literalinclude:: tutorial_1/ozone.out
   :language: text
-  :lines: 15-21
-  :lineno-start: 15
+  :lines: 14-20
+  :lineno-start: 14
 
 For this calculation we can see that ``koopmans`` has run three PBE calculations. These initialise the density with the PBE density. Indeed, from this point onwards in the calcuation the density will never change, because the KI functional yields the same density as the base functional. (N.B. This is not true of KIPZ.)
 
@@ -76,7 +76,7 @@ These PBE calculations also have provided us with our variational orbitals -- we
 
 But why three PBE calculations? The reason for this is that the calculations we will perform later involve the addition/removal of a single electron, which means the density we need to generate here must correspond to a ``nspin = 2`` calculation. However, we know ozone is a closed-shell molecule and simply performing a ``nspin = 2`` PBE calculation risks introducing spin contamination (i.e. falling into a local minimum where :math:`n^\uparrow(\mathbf{r}) \neq n^\downarrow(\mathbf{r})`).
 
-This sequence of three calculations is designed to avoid this; we first optimise the density constrained to be spin-unpolarised, and only once that density has been minimised do we lift this restriction. This additional step can be disabled by adding ``"enforce_spin_symmetry": false`` to the ``workflow`` block of ``ozone.json``.
+This sequence of three calculations is designed to avoid this; we first optimise the density constrained to be spin-unpolarised, and only once that density has been minimised do we lift this restriction. This additional step can be disabled by adding ``"fix_spin_contamination": false`` to the ``workflow`` block of ``ozone.json``.
 
 The input and output Quantum ESPRESSO files for this first step can all be found in the directory ``init/``.
 
@@ -89,16 +89,14 @@ The second step in the calculation involves the calculation of the screening par
   :lines: 22-40
   :lineno-start: 22
 
-etc. Here, we are calculating the screening parameters using the :ref:`ΔSCF method <theory_dscf>`. For filled orbitals (orbitals 1-9 of ozone) this requires an :math:`N-1`-electron PBE calculation where we freeze the i\ :sup:`th` orbital, empty it, and allow the rest of the density to relax. This yields :math:`E_i(N-1)`.
-  
-Meanwhile, :math:`E(N)`, :math:`\varepsilon_{i}^\alpha(1)`, and :math:`\varepsilon_{i}^0(1)` are all obtained during the trial KI calculation ``calc_alpha/ki``. Together with the value of our guess for the screening parameters (:math:`\alpha^0_i = 0.6`), this is sufficient to update our guess for :math:`\alpha_i` (see the :ref:`theory section <theory_dscf>` for details).
+etc. Here, we are calculating the screening parameters using the :ref:`ΔSCF method <theory_dscf>`. For filled orbitals (orbitals 1-9 of ozone) this requires an :math:`N-1`-electron PBE calculation where we freeze the i\ :sup:`th` orbital, empty it, and allow the rest of the density to relax. This yields :math:`E_i(N-1)`. Meanwhile, :math:`E(N)`, :math:`\varepsilon_{i}^\alpha(1)`, and :math:`\varepsilon_{i}^0(1)` are all obtained during the trial KI calculation ``calc_alpha/ki``. Together with the value of our guess for the screening parameters (:math:`\alpha^0_i = 0.6`), this is sufficient to update our guess for :math:`\alpha_i` (see the :ref:`theory section <theory_dscf>` for details).
 
 The procedure for empty orbitals is slightly different, as we can see when it comes to orbital 10:
 
 .. literalinclude:: tutorial_1/ozone.out
   :language: text
-  :lines: 81-87
-  :lineno-start: 81
+  :lines: 61-67
+  :lineno-start: 61
 
 where now we must call Quantum ESPRESSO several times in order to obtain :math:`E_i(N+1)`.
 
@@ -114,8 +112,8 @@ At the end of this section we can see a couple of tables:
 
 .. literalinclude:: tutorial_1/ozone.out
   :language: text
-  :lines: 90-102
-  :lineno-start: 90
+  :lines: 67-81
+  :lineno-start: 67
 
 The first table lists the screening parameters :math:`\alpha_i` that we obtained -- we can see from row 0 we started with a guess of :math:`\alpha_i = 0.6` for every orbital `i`, and row 1 shows the alpha values.
 
@@ -132,8 +130,8 @@ Having determined the screening parameters, the final KI calculation is now run:
 
 .. literalinclude:: tutorial_1/ozone.out
   :language: text
-  :lines: 103-105
-  :lineno-start: 103
+  :lines: 83-87
+  :lineno-start: 83
 
 The input and output Quantum ESPRESSO files for this step can be found in the directory ``final/``.
 
