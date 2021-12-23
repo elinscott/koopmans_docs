@@ -160,8 +160,7 @@ In the "KIPZ" approach, the slope :math:`\eta_i` is also chosen as the total ene
 
 .. math::
 
-    \eta_i^{\rm KIPZ} = & E^{\rm PZ}[f_i=1]-E^{\rm PZ}[f_i=0] \nonumber \\
-                  = & \int_0^{1} \langle \varphi_i | \hat{h}_i^{\rm PZ}(s) | \varphi_i \rangle ds,
+    \eta_i^{\rm KIPZ} = E^{\rm PZ}[f_i=1]-E^{\rm PZ}[f_i=0] = \int_0^{1} \langle \varphi_i | \hat{h}_i^{\rm PZ}(s) | \varphi_i \rangle ds,
                   \label{eta_kipz}
 
 providing the explicit expression for the unscreened :math:`\Pi_i^{\rm KIPZ}` correction

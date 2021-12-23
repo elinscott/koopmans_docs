@@ -40,10 +40,10 @@ If we take the derivative with respect to the occupancy of the :math:`j^{\rm th}
 
 .. math::
 
-   \varepsilon^\text{Koopmans}_j = \left.\frac{dE^{DFT}}{df_j}\right|_{f_j=s} + \left.\frac{d\Pi_j}{df_j}\right|_{f_j=s} = \langle \varphi_j| \hat h^\text{DFT}(s)|\varphi_j\rangle
+   \eta_j = \left.\frac{dE^{DFT}}{df_j}\right|_{f_j=s} + \left.\frac{d\Pi_j}{df_j}\right|_{f_j=s} = \langle \varphi_j| \hat h^\text{DFT}(s)|\varphi_j\rangle
    + \left.\frac{d\Pi_j}{df_j}\right|_{f_j=s}
 
-where we assumed that the cross-term derivatives :math:`d\Pi_i/df_j` vanish, and for the second equality we invoked Janak's theorem. 
+where we assumed that the cross-term derivatives :math:`d\Pi_i/df_j` vanish, and because :math:`E^\text{Koopmans}` ought to be linear in :math:`f_j`,  we replaced its derivative with some yet-to-be deterimined constant :math:`\eta_j`. For the second equality we invoked Janak's theorem.
 
 Assuming that the our energy correction :math:`\Pi_j` is zero at integer occupancies, and neglecting for the moment any orbital relaxation as the orbital occupancies change, it follows that
 
@@ -84,7 +84,7 @@ To understand this functional a little better, consider the following figure, th
    
 What energy does the Koopmans functional assign to this system? Well, it starts with the energy given by the base functional :math:`E^{DFT}[\rho]`. This is denoted as point 1 in the above figure. From this term we subtract :math:`\alpha_i\int^{f_i}_{0} \langle \varphi_i | \hat{h}^{\rm DFT}(s) | \varphi_i \rangle ds` -- that is, we remove the spurious non-linear dependence of the energy on the orbital occupancy. This takes us from point 1 to point 2 in the figure. Finally we add back in :math:`\alpha_i f_i \eta_i`, a term that is linear in :math:`f_i` with some as-of-yet unspecified gradient :math:`\alpha_i\eta_i` (point 3).
 
-The end result is that :math:`E^\text{Koopmans}` is explicitly linear in :math:`f_i` and thus it satisfies property 1 by construction. As for property 2, the value of :math:`\varepsilon^\text{Koopmans}_i` is given by :math:`alpha_i \eta_i`. We will therefore choose our these two parameters in order to guarantee that these quasiparticle energies correspond to the desired total energy differences. We will discuss how exactly this is done :ref:`later <theory_screening>`.
+The end result is that :math:`E^\text{Koopmans}` is explicitly linear in :math:`f_i` and thus it satisfies property 1 by construction. As for property 2, the value of :math:`\varepsilon^\text{Koopmans}_i` is given by :math:`\alpha_i \eta_i`. We will therefore choose our these two parameters in order to guarantee that these quasiparticle energies correspond to the desired total energy differences. We will discuss how exactly this is done :ref:`later <theory_screening>`.
 
 ----
 
