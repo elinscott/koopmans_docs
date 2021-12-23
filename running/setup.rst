@@ -6,7 +6,7 @@ The ``setup`` block contains variables common to all of the quantum espresso cal
 .. literalinclude:: ../tutorials/tutorial_3/h2o_conv.json
   :lines: 12-36
 
-It uses the same keywords and cards as ``kcp.x`` input files, with namelists and cards are provided as subdictionairies. The one exception to this rule is the ``k_points`` block, which is not a ``kcp.x`` card but can still be provided here e.g.
+It uses the same keywords and cards as ``pw.x`` input files, with namelists and cards are provided as subdictionairies. The one exception to this rule is the ``k_points`` block, which has a slightly customised layout:
 
 .. literalinclude:: ../tutorials/tutorial_2/si.json
   :lines: 49-61
