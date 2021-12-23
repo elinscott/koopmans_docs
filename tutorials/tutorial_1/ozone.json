@@ -9,7 +9,7 @@
   },
   "setup": {
     "control": {
-      "pseudo_dir": "../../pseudos/"
+      "pseudo_dir": "../../../pseudos/"
     },
     "system": {
       "ibrav": 0,

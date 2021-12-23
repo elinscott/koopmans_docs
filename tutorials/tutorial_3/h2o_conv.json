@@ -1,13 +1,13 @@
 {
     "workflow":
     {
-        "functional"               : "pbe",
+        "functional"               : "dft",
         "task"                     : "convergence",
-        "from_scratch"             : true,
+        "from_scratch"             : false,
         "convergence_observable"   : "homo energy",
         "convergence_threshold"    : "0.01 eV",
         "convergence_parameters"   : ["ecutwfc", "cell_size"],
-        "enforce_spin_symmetry"    : false
+        "fix_spin_contamination"   : false
     },
     "setup":
     {

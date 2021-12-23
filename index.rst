@@ -1,4 +1,4 @@
-.. figure:: _static/logos/logo_koopmans_black_and_grey_on_transp_exorcised.png
+.. figure:: _static/logos/koopmans_grey_on_transparent.png
    :width: 400
    :align: center
    :alt: Koopmans logo
@@ -13,6 +13,7 @@ Contents
 .. toctree::
    :maxdepth: 2
 
+   about
    quick_start
    theory
    installation

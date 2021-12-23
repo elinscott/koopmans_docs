@@ -12,3 +12,5 @@ The ``workflow`` block contains variables that define the details of the workflo
 .. raw:: html
    :file: ../_static/python_ki_keywords/workflow_keywords.html
 
+.. raw:: html
+   :file: ../_static/python_ki_keywords/lookup_table.html
