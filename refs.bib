@@ -1,3 +1,4 @@
+
 @article{Baroni2001,
   title = {Phonons and Related Crystal Properties from Density-Functional Perturbation Theory},
   author = {Baroni, Stefano and {de Gironcoli}, Stefano and Dal Corso, Andrea and Giannozzi, Paolo},
@@ -74,6 +75,21 @@
   abstract = {Koopmans-compliant (KC) functionals have been shown to provide accurate spectral properties through a generalized condition of piecewise linearity of the total energy as a function of the fractional addition/removal of an electron to/from any orbital. We analyze the performance of different KC functionals on a large and standardized set of 100 molecules, the GW100 test set, comparing vertical ionization potentials (taken as opposite of the orbital energies) to those obtained from accurate quantum chemistry methods, and to experimental results. We find excellent agreement, with a mean absolute error of 0.20 eV for the KIPZ functional on the first ionization potential, which is state-of-the-art for both density functional theory (DFT)-based calculations and many-body perturbation theory. We highlight similarities and differences between KC functionals and other electronic-structure approaches, such as dielectric-dependent hybrid functionals and Green's function methods, both from a theoretical and from a pr...}
 }
 
+@article{Colonna2022,
+  title = {Koopmans Spectral Functionals in Periodic-Boundary Conditions},
+  author = {Colonna, Nicola and De Gennaro, Riccardo and Linscott, Edward and Marzari, Nicola},
+  year = {2022},
+  month = feb,
+  journal = {arXiv:2202.08155 [cond-mat, physics:physics]},
+  eprint = {2202.08155},
+  eprinttype = {arxiv},
+  primaryclass = {cond-mat, physics:physics},
+  abstract = {Koopmans spectral functionals aim to describe simultaneously ground state properties and charged excitations of atoms, molecules, nanostructures and periodic crystals. This is achieved by augmenting standard density functionals with simple but physically motivated orbital-density-dependent corrections. These corrections act on a set of localized orbitals that, in periodic systems, resemble maximally localized Wannier functions. At variance with the original, direct supercell implementation [Phys. Rev. X 8, 021051 (2018)], we discuss here i) the complex but efficient formalism required for a periodic-boundary code using explicit Brillouin zone sampling, and ii) the calculation of the screened Koopmans corrections with density-functional perturbation theory. The implementation in the QUANTUM ESPRESSO distribution and the application to prototypical insulating and semiconducting systems are presented and discussed.},
+  archiveprefix = {arXiv},
+  keywords = {Condensed Matter - Materials Science,Physics - Computational Physics},
+  file = {/home/elinscott/Zotero/storage/FFDXL5Q9/2202.html}
+}
+
 @misc{Dabo2009,
   title = {Non-{{Koopmans Corrections}} in {{Density-functional Theory}}: {{Self-interaction Revisited}}},
   author = {Dabo, I. and Cococcioni, M. and Marzari, N.},
@@ -124,7 +140,11 @@
   month = nov,
   eprint = {2111.09550},
   eprinttype = {arxiv},
-  journal = {arXiv}
+  abstract = {Koopmans-compliant functionals provide a novel orbital-density-dependent framework for an accurate evaluation of spectral properties; they are obtained by imposing a generalized piecewise-linearity condition on the total energy of the system with respect to the occupation of any orbital. In crystalline materials, due to the orbital-density-dependent nature of the functionals, minimization of the total energy to a ground state provides a set of minimizing variational orbitals that are localized, and thus break the periodicity of the underlying lattice. Despite this, we show that Bloch symmetry can be preserved and it is possible to describe the electronic states with a band-structure picture, thanks to the Wannier-like character of the variational orbitals. We also present a method to unfold and interpolate the electronic bands from supercell (\$\textbackslash Gamma\$-point) calculations, which enables us to calculate full band structures with Koopmans-compliant functionals. The results obtained for a set of benchmark semiconductors and insulators show a very good agreement with state-of-the-art many-body perturbation theory and experiments, underscoring the reliability of these spectral functionals in predicting band structures.},
+  archiveprefix = {arXiv},
+  copyright = {All rights reserved},
+  keywords = {Condensed Matter - Materials Science,Physics - Computational Physics},
+  file = {/home/elinscott/Zotero/storage/T9I3DVPT/2111.html}
 }
 
 @article{Ferretti2014,
@@ -139,6 +159,35 @@
   publisher = {{American Physical Society}},
   issn = {1098-0121},
   doi = {10.1103/PhysRevB.89.195134}
+}
+
+@article{Hamann2013,
+  title = {Optimized Norm-Conserving {{Vanderbilt}} Pseudopotentials},
+  author = {Hamann, D. R.},
+  year = {2013},
+  month = aug,
+  journal = {Physical Review B - Condensed Matter and Materials Physics},
+  volume = {88},
+  number = {8},
+  pages = {085117},
+  publisher = {{American Physical Society}},
+  issn = {10980121},
+  doi = {10.1103/PhysRevB.88.085117},
+  abstract = {Fully nonlocal two-projector norm-conserving pseudopotentials are shown to be compatible with a systematic approach to the optimization of convergence with the size of the plane-wave basis. A reformulation of the optimization is developed, including the ability to apply it to positive-energy atomic scattering states and to enforce greater continuity in the pseudopotential. The generalization of norm conservation to multiple projectors is reviewed and recast for the present purposes. Comparisons among the results of all-electron and one- and two-projector norm-conserving pseudopotential calculations of lattice constants and bulk moduli are made for a group of solids chosen to represent a variety of types of bonding and a sampling of the periodic table. \textcopyright{} 2013 American Physical Society.}
+}
+
+@article{Lejaeghere2016,
+  title = {Reproducibility in Density Functional Theory Calculations of Solids},
+  author = {Lejaeghere, Kurt and Bihlmayer, Gustav and Bj{\"o}rkman, Torbj{\"o}rn and Blaha, Peter and Bl{\"u}gel, Stefan and Blum, Volker and Caliste, Damien and Castelli, Ivano E. and Clark, Stewart J. and Dal Corso, Andrea and {de Gironcoli}, Stefano and Deutsch, Thierry and Dewhurst, John Kay and Di Marco, Igor and Draxl, Claudia and Du{\l}ak, Marcin and Eriksson, Olle and {Flores-Livas}, Jos{\'e} A. and Garrity, Kevin F. and Genovese, Luigi and Giannozzi, Paolo and Giantomassi, Matteo and Goedecker, Stefan and Gonze, Xavier and Gr{\aa}n{\"a}s, Oscar and Gross, E. K. U. and Gulans, Andris and Gygi, Fran{\c c}ois and Hamann, D. R. and Hasnip, Phil J. and Holzwarth, N. A. W. and Iu{\c s}an, Diana and Jochym, Dominik B. and Jollet, Fran{\c c}ois and Jones, Daniel and Kresse, Georg and Koepernik, Klaus and K{\"u}{\c c}{\"u}kbenli, Emine and Kvashnin, Yaroslav O. and Locht, Inka L. M. and Lubeck, Sven and Marsman, Martijn and Marzari, Nicola and Nitzsche, Ulrike and Nordstr{\"o}m, Lars and Ozaki, Taisuke and Paulatto, Lorenzo and Pickard, Chris J. and Poelmans, Ward and Probert, Matt I. J. and Refson, Keith and Richter, Manuel and Rignanese, Gian-Marco and Saha, Santanu and Scheffler, Matthias and Schlipf, Martin and Schwarz, Karlheinz and Sharma, Sangeeta and Tavazza, Francesca and Thunstr{\"o}m, Patrik and Tkatchenko, Alexandre and Torrent, Marc and Vanderbilt, David and {van Setten}, Michiel J. and Van Speybroeck, Veronique and Wills, John M. and Yates, Jonathan R. and Zhang, Guo-Xu and Cottenier, Stefaan},
+  year = {2016},
+  month = mar,
+  journal = {Science},
+  volume = {351},
+  number = {6280},
+  pages = {aad3000},
+  publisher = {{American Association for the Advancement of Science}},
+  doi = {10.1126/science.aad3000},
+  file = {/home/elinscott/Zotero/storage/N77LAZNS/lejaeghere_2016_reproducibility_in_density.pdf}
 }
 
 @article{Marzari2012,
@@ -217,6 +266,57 @@
   doi = {10.1063/1.446959},
   abstract = {A scheme for incorporating the self-interaction correction (SIC) to the local density approximation of the Hartree\textendash Fock theory of electronic structure of molecules is presented. This method is applied to the N2 molecule and the resulting orbital energies and total energy are in good agreement with the Hartree\textendash Fock values.},
   keywords = {ELECTRONIC STRUCTURE,HARTREE−FOCK METHOD,MOLECULES,NITROGEN}
+}
+
+@article{Prandini2018,
+  title = {Precision and Efficiency in Solid-State Pseudopotential Calculations},
+  author = {Prandini, Gianluca and Marrazzo, Antimo and Castelli, Ivano E. and Mounet, Nicolas and Marzari, Nicola},
+  year = {2018},
+  month = dec,
+  journal = {npj Comput Mater},
+  volume = {4},
+  number = {1},
+  pages = {1--13},
+  publisher = {{Nature Publishing Group}},
+  issn = {2057-3960},
+  doi = {10.1038/s41524-018-0127-2},
+  abstract = {Despite the enormous success and popularity of density-functional theory, systematic verification and validation studies are still limited in number and scope. Here, we propose a protocol to test publicly available pseudopotential libraries, based on several independent criteria including verification against all-electron equations of state and plane-wave convergence tests for phonon frequencies, band structure, cohesive energy and pressure. Adopting these criteria we obtain curated pseudopotential libraries (named SSSP or standard solid-state pseudopotential libraries), that we target for high-throughput materials screening (``SSSP efficiency'') and high-precision materials modelling (``SSSP precision''). This latter scores highest among open-source pseudopotential libraries available in the {$\Delta$}-factor test of equations of states of elemental solids.},
+  copyright = {2018 The Author(s)},
+  langid = {english},
+  keywords = {Computational methods,Electronic structure},
+  file = {/home/elinscott/Zotero/storage/4L7AN292/prandini_2018_precision_and_efficiency_in.pdf;/home/elinscott/Zotero/storage/C8JNWI33/s41524-018-0127-2.html}
+}
+
+@article{Scherpelz2016,
+  title = {Implementation and {{Validation}} of {{Fully Relativistic GW Calculations}}: {{Spin}}\textendash{{Orbit Coupling}} in {{Molecules}}, {{Nanocrystals}}, and {{Solids}}},
+  shorttitle = {Implementation and {{Validation}} of {{Fully Relativistic GW Calculations}}},
+  author = {Scherpelz, Peter and Govoni, Marco and Hamada, Ikutaro and Galli, Giulia},
+  year = {2016},
+  month = aug,
+  journal = {J. Chem. Theory Comput.},
+  volume = {12},
+  number = {8},
+  pages = {3523--3544},
+  publisher = {{American Chemical Society}},
+  issn = {1549-9618},
+  doi = {10.1021/acs.jctc.6b00114},
+  abstract = {We present an implementation of G0W0 calculations including spin\textendash orbit coupling (SOC) enabling investigations of large systems, with thousands of electrons, and we discuss results for molecules, solids, and nanocrystals. Using a newly developed set of molecules with heavy elements (called GW-SOC81), we find that, when based upon hybrid density functional calculations, fully relativistic (FR) and scalar-relativistic (SR) G0W0 calculations of vertical ionization potentials both yield excellent performance compared to experiment, with errors below 1.9\%. We demonstrate that while SR calculations have higher random errors, FR calculations systematically underestimate the VIP by 0.1 to 0.2 eV. We further verify that SOC effects may be well approximated at the FR density functional level and then added to SR G0W0 results for a broad class of systems. We also address the use of different root-finding algorithms for the G0W0 quasiparticle equation and the significant influence of including d electrons in the valence partition of the pseudopotential for G0W0 calculations. Finally, we present statistical analyses of our data, highlighting the importance of separating definitive improvements from those that may occur by chance due to a limited number of samples. We suggest the statistical analyses used here will be useful in the assessment of the accuracy of a large variety of electronic structure methods.},
+  file = {/home/elinscott/Zotero/storage/86VVXWRS/acs.jctc.html}
+}
+
+@article{Schlipf2015,
+  title = {Optimization Algorithm for the Generation of {{ONCV}} Pseudopotentials},
+  author = {Schlipf, Martin and Gygi, Fran{\c c}ois},
+  year = {2015},
+  month = nov,
+  journal = {Computer Physics Communications},
+  volume = {196},
+  pages = {36--44},
+  issn = {0010-4655},
+  doi = {10.1016/j.cpc.2015.05.011},
+  abstract = {We present an optimization algorithm to construct pseudopotentials and use it to generate a set of Optimized Norm-Conserving Vanderbilt (ONCV) pseudopotentials for elements up to Z=83 (Bi) (excluding Lanthanides). We introduce a quality function that assesses the agreement of a pseudopotential calculation with all-electron FLAPW results, and the necessary plane-wave energy cutoff. This quality function allows us to use a Nelder\textendash Mead optimization algorithm on a training set of materials to optimize the input parameters of the pseudopotential construction for most of the periodic table. We control the accuracy of the resulting pseudopotentials on a test set of materials independent of the training set. We find that the automatically constructed pseudopotentials (http://www.quantum-simulation.org) provide a good agreement with the all-electron results obtained using the FLEUR code with a plane-wave energy cutoff of approximately 60 Ry.},
+  keywords = {All-electron calculation,Condensed matter,Density functional theory,Plane wave,Pseudopotential},
+  file = {/home/elinscott/Zotero/storage/2IJHPZYW/S0010465515001897.html}
 }
 
 
